@@ -13,12 +13,12 @@ void animate(const Pictures* pictures, int delay_ms) {
         for (int row = 0; row < pictures->rows; ++row) {
             mvprintw(row, 0, "%s", pictures->frames[frame][row]);
         }
-        refresh();       // Änderungen anzeigen
-        napms(delay_ms); // Pause in Millisekunden
+        refresh();      
+        napms(delay_ms); 
     }
 
     curs_set(1);         // Cursor wieder einblenden
-    endwin();            // ncurses-Modus beenden
+    endwin();            // ncurses beenden
 }
 
 void animate_dual(const Pictures* pictures1, const Pictures* pictures2, int Feuchte, int delay_ms) {
@@ -44,7 +44,7 @@ void animate_dual(const Pictures* pictures1, const Pictures* pictures2, int Feuc
             mvprintw(row, offset, "%s", pictures2->frames[f2][row]);
         }
 
-         // Variable über Animation 2 anzeigen
+         // Variable über Animation 2 
         mvprintw(0, offset, "Wasserstand: %d", Feuchte);
 
         refresh();
