@@ -3,7 +3,7 @@
 
 
 
-// Animationsfunktion
+// Funktion Sensor auslesen
 float ReadMoisture();
 
 #endif
