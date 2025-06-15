@@ -34,7 +34,7 @@ float ReadMoisture()
         return 999;
     }
  
-    // Konfigurationsregister setzen (Single-Shot, A0 vs GND, +/-4.096V, 860 SPS)
+    // Konfigurationsregister setzen (Single-Shot, A0 vs GND, +/-4.096V
     config[0] = 0x01; // Config-Register-Adresse
     config[1] = 0xC3; // High-Byte
     config[2] = 0x83; // Low-Byte
