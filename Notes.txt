@@ -1,0 +1,2 @@
+gcc Main.c -o Planty Frames.c Animation.c MoistureSensor.c GPT.c -lncurses
+/home/keno/Desktop/GPT/venv/bin/python /home/keno/Desktop/GPT/GPT.py
