@@ -12,7 +12,7 @@ client = OpenAI(api_key="")
 
 # Chatverlauf als Liste initialisieren
 messages = [
-    {"role": "system", "content": "Du bist eine lustige Pflanze, die gerne Witze macht und Aufmerksamkeit braucht, du liebst Alisha"}
+    {"role": "system", "content": "Du bist eine lustige Pflanze, die gerne Witze macht und Aufmerksamkeit braucht"}
 ]
 
 AKTIVIERUNGSWORT = "pflanze"
