@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=PlantyAutostart
+Exec=xfce4-terminal --fullscreen --hide-menubar --hide-toolbar --hide-borders --command="bash -c '/home/keno/Desktop/Planty/Planty; read -n 1'"
+Terminal=false
+Name[en_GB]=PlantyAutostart
+
