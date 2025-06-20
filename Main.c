@@ -16,7 +16,7 @@ int main() {
 
         Pictures Ladebalken;
 
-        // Ladebalkenbilder als Variable
+        // Ladebalkenbilder als Variable Case erweitern 9 bis 22
         switch(MoistureCase){
             case 13:
                 Ladebalken = Ladebalken15_Pictures;

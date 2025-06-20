@@ -41,10 +41,11 @@ int GPT_Communication() {
     int ReturnSQLLiteDB;
     char *DatenbankError = NULL;
     // SQL Befehle
-    const char *sql_Tabelle_Init = "CREATE TABLE IF NOT EXISTS C (value INTEGER);" "CREATE TABLE IF NOT EXISTS GPT (flag BOOLEAN);";
-    const char *sql_Zeile_Init_c = "INSERT INTO C (value) SELECT 0 WHERE NOT EXISTS (SELECT 1 FROM C);";
-    const char *sql_Zeile_Init_gpt = "INSERT INTO GPT (flag) SELECT 0 WHERE NOT EXISTS (SELECT 1 FROM GPT);";
-    const char *sql_Read_GPT = "SELECT flag FROM GPT LIMIT 1;";
+    const char *sql_Tabelle_Init = "CREATE TABLE IF NOT EXISTS C (Sensorwert INTEGER);" "CREATE TABLE IF NOT EXISTS GPT (speaking BOOLEAN);";
+    const char *sql_Zeile_Init_c = "INSERT INTO C (Sensorwert) SELECT 0 WHERE NOT EXISTS (SELECT 1 FROM C);";
+    const char *sql_Zeile_Init_gpt = "INSERT INTO GPT (speaking) SELECT 0 WHERE NOT EXISTS (SELECT 1 FROM GPT);";
+    const char *sql_Read_GPT = "SELECT speaking FROM GPT LIMIT 1;";
+    
 
     // DB öffnen 
     ReturnSQLLiteDB = sqlite3_open("mydatabase.db", &Datenbank);
