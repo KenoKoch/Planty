@@ -1,31 +1,34 @@
+#!/home/keno/Desktop/GPT/venv python3
+
 from openai import OpenAI
 import sounddevice as sd
 import numpy as np
 import speech_recognition as sr
 import os
+import sqlite3
 
-#!/home/keno/Desktop/GPT/venv python3
 
-
-# Open AI API Key
+# Initialisieren
 client = OpenAI(api_key="")
-
-# Chatverlauf als Liste initialisieren
-messages = [
-    {"role": "system", "content": "Du bist eine lustige Pflanze, die gerne Witze macht und Aufmerksamkeit braucht"}
-]
-
+messages = [{"role": "system", "content": "Du bist eine lustige Pflanze, die gerne Witze macht und Aufmerksamkeit braucht"}]
 AKTIVIERUNGSWORT = "pflanze"
 
 
 # Funktionen
-def set_status(speaking=False, listening=False):
+def Update_State_DB(speaking: int):
+    Database = None
     try:
-        with open("/home/keno/Desktop/data/state.txt", "w") as f:
-            f.write(f"speaking={int(speaking)}\nlistening={int(listening)}\n")
-        print("Status geschrieben!")
-    except Exception as e:
-        print(f"Fehler beim Schreiben des Status: {e}")
+        Database = sqlite3.connect("Database.db") 
+        cursor = Database.cursor()
+        # speaking schreiben
+        cursor.execute("UPDATE GPT SET speaking = ?;", (speaking,))
+        Database.commit()
+        print("GPT Status in DB aktualisiert.")
+    except sqlite3.Error as e:
+        print(f"Fehler beim Schreiben in die Datenbank: {e}")
+    finally:
+        if Database:
+            Database.close()
 
 def record_audio(duration=3, fs=16000):
     print(f"Aufnahme ({duration} Sekunden)...")
@@ -50,7 +53,6 @@ def warte_auf_schlagwort():
     while True:
         audio = record_audio(duration=3)
         text = recognize_speech(audio)
-        set_status(speaking=False, listening=True)
         if not text:
             print("Nichts erkannt. Noch einmal versuchen...")
             continue
@@ -60,6 +62,7 @@ def warte_auf_schlagwort():
             break
 
 # Warte auf das Aktivierungswort
+Update_State_DB(speaking = 3)
 warte_auf_schlagwort()
 os.system(f'espeak -v de "Ich höre"')
 print("Starte Chat-Schleife!")
@@ -68,7 +71,7 @@ print("Starte Chat-Schleife!")
 while True:
     audio = record_audio(duration=5)
     text = recognize_speech(audio)
-    set_status(speaking=False, listening=True)
+    Update_State_DB(speaking = 3)
     if not text:
         print("Nicht verstanden, bitte nochmal versuchen.")
         continue
@@ -83,7 +86,7 @@ while True:
             model="o3-mini",  
             messages=messages
         )
-        set_status(speaking=True, listening=False)
+        Update_State_DB(speaking = 2)
         reply = completion.choices[0].message.content
     except Exception as e:
         print(f"Fehler bei der Anfrage an OpenAI: {e}")

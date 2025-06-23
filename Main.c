@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include "Animation.h"
 #include "Frames.h"
 #include "MoistureSensor.h"
-#include <unistd.h>
 #include "GPT.h"
 
 
@@ -14,6 +15,14 @@ int main() {
     int CounterTillBlink = 0;
     Pictures Ladebalken = Ladebalken1_Pictures;
     bool GPT_State = false;
+    
+    // GPT Python Skript starten
+    int Successfull = system("GPT.py &");
+    if (Successfull == -1) {
+        perror("Fehler beim Starten von GPT.py");
+    } else {
+        printf("GPT.py gestartet.\n");
+    }
 
     while(1){
 
@@ -24,7 +33,7 @@ int main() {
        
         // GPT Status abfragen
         if (GPT_Communication_init() == 0) {
-            GPT_State = (GPT_Read_State() == 3);
+            GPT_State = (GPT_Read_State() == 2);
         }
 
         // Merker Case von Pi File kopieren
