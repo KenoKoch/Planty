@@ -5,7 +5,7 @@
 
 // Alte Funktion zum File lesen
 int get_status(const char* status) {
-    FILE* f = fopen("/home/keno/Desktop/data/state.txt", "r");
+    FILE* f = fopen("data/state.txt", "r");
     if (!f) return 0;
     char line[64];
     int value = 0;
@@ -34,8 +34,31 @@ int ErrorDB(int ReturnValue, sqlite3 *DB,  char *Error){
     return 0;
 }
 
+// Callback Funktion zum Daten speichern aus DB
+typedef struct {
+    int GPTState ;
+    int SensorValue;
+} SQLData;
+
+SQLData Ergebnisse = {0};
+
+int callback(void *data, int AnzahlSpalten, char **SpaltenErgebnisse, char **SpaltenNamen) {
+    if (strcmp(SpaltenNamen[0], "speaking") == 0) {
+        if (AnzahlSpalten > 0 && SpaltenErgebnisse[0]) {
+            Ergebnisse.GPTState = atoi(SpaltenErgebnisse[0]);  
+        }
+    }
+    else
+        if (AnzahlSpalten > 0 && SpaltenErgebnisse[0]) {
+            Ergebnisse.SensorValue = atoi(SpaltenErgebnisse[0]);  
+        }
+
+    return 0;
+}
+
+
 // DB und Tabellen erstellen
-int GPT_Communication() {
+int GPT_Communication_init() {
     // Variablen initialisieren
     sqlite3 *Datenbank;
     int ReturnSQLLiteDB;
@@ -44,10 +67,7 @@ int GPT_Communication() {
     const char *sql_Tabelle_Init = "CREATE TABLE IF NOT EXISTS C (Sensorwert INTEGER);" "CREATE TABLE IF NOT EXISTS GPT (speaking BOOLEAN);";
     const char *sql_Zeile_Init_c = "INSERT INTO C (Sensorwert) SELECT 0 WHERE NOT EXISTS (SELECT 1 FROM C);";
     const char *sql_Zeile_Init_gpt = "INSERT INTO GPT (speaking) SELECT 0 WHERE NOT EXISTS (SELECT 1 FROM GPT);";
-    const char *sql_Read_GPT = "SELECT speaking FROM GPT LIMIT 1;";
     
-
-    // DB öffnen 
     ReturnSQLLiteDB = sqlite3_open("mydatabase.db", &Datenbank);
     if (ErrorDB(ReturnSQLLiteDB, Datenbank, NULL) == 1) {
         return 1;
@@ -67,14 +87,30 @@ int GPT_Communication() {
         return 1;
     }
 
-    // GPT Lesen
-    ReturnSQLLiteDB = sqlite3_exec(Datenbank, sql_Read_GPT , 0, 0, &DatenbankError);
-    if (ErrorDB(ReturnSQLLiteDB, Datenbank, DatenbankError) == 1) {
+    sqlite3_close(Datenbank);
+    return 0;
+}
+
+int GPT_Communication_Read() {
+    // Variablen initialisieren
+    sqlite3 *Datenbank;
+    int ReturnSQLLiteDB;
+    char *DatenbankError = NULL;
+    // SQL Befehle
+    const char *sql_Read_GPT = "SELECT speaking FROM GPT LIMIT 1;";
+    
+
+    // DB öffnen 
+    ReturnSQLLiteDB = sqlite3_open("mydatabase.db", &Datenbank);
+    if (ErrorDB(ReturnSQLLiteDB, Datenbank, NULL) == 1) {
         return 1;
     }
 
-    
-
+    // GPT Lesen
+    ReturnSQLLiteDB = sqlite3_exec(Datenbank, sql_Read_GPT , callback, &Ergebnisse, &DatenbankError);
+    if (ErrorDB(ReturnSQLLiteDB, Datenbank, DatenbankError) == 1) {
+        return 1;
+    }
 
     sqlite3_close(Datenbank);
     return 0;
