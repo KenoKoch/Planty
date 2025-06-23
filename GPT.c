@@ -19,7 +19,11 @@ int get_status(const char* status) {
     return value;
 }
 
-// Error DB Funktion
+
+
+// Hilfsfunktionen für Datenbankabfragen:
+
+// Error Handling
 int ErrorDB(int ReturnValue, sqlite3 *DB,  char *Error){
     if (ReturnValue != SQLITE_OK) {
         if (Error) {
@@ -45,19 +49,19 @@ SQLData Ergebnisse = {0};
 int callback(void *data, int AnzahlSpalten, char **SpaltenErgebnisse, char **SpaltenNamen) {
     if (strcmp(SpaltenNamen[0], "speaking") == 0) {
         if (AnzahlSpalten > 0 && SpaltenErgebnisse[0]) {
-            Ergebnisse.GPTState = atoi(SpaltenErgebnisse[0]);  
+            Ergebnisse.GPTState = atoi(SpaltenErgebnisse[0]);
+            return 0;  
         }
     }
     else
         if (AnzahlSpalten > 0 && SpaltenErgebnisse[0]) {
-            Ergebnisse.SensorValue = atoi(SpaltenErgebnisse[0]);  
+            Ergebnisse.SensorValue = atoi(SpaltenErgebnisse[0]);
+            return 0;   
         }
-
-    return 0;
+    return 1;
 }
 
 
-// DB und Tabellen erstellen
 int GPT_Communication_init() {
     // Variablen initialisieren
     sqlite3 *Datenbank;
@@ -68,7 +72,7 @@ int GPT_Communication_init() {
     const char *sql_Zeile_Init_c = "INSERT INTO C (Sensorwert) SELECT 0 WHERE NOT EXISTS (SELECT 1 FROM C);";
     const char *sql_Zeile_Init_gpt = "INSERT INTO GPT (speaking) SELECT 0 WHERE NOT EXISTS (SELECT 1 FROM GPT);";
     
-    ReturnSQLLiteDB = sqlite3_open("mydatabase.db", &Datenbank);
+    ReturnSQLLiteDB = sqlite3_open("Database.db", &Datenbank);
     if (ErrorDB(ReturnSQLLiteDB, Datenbank, NULL) == 1) {
         return 1;
     }
@@ -101,13 +105,39 @@ int GPT_Communication_Read() {
     
 
     // DB öffnen 
-    ReturnSQLLiteDB = sqlite3_open("mydatabase.db", &Datenbank);
+    ReturnSQLLiteDB = sqlite3_open("Database.db", &Datenbank);
     if (ErrorDB(ReturnSQLLiteDB, Datenbank, NULL) == 1) {
         return 1;
     }
 
     // GPT Lesen
-    ReturnSQLLiteDB = sqlite3_exec(Datenbank, sql_Read_GPT , callback, &Ergebnisse, &DatenbankError);
+    ReturnSQLLiteDB = sqlite3_exec(Datenbank, sql_Read_GPT , callback, 0, &DatenbankError);
+    if (ErrorDB(ReturnSQLLiteDB, Datenbank, DatenbankError) == 1) {
+        return 1;
+    }
+
+    sqlite3_close(Datenbank);
+    return 0;
+}
+
+int GPT_Communication_Update_Sensorwert(int Sensorwert) {
+    // Variablen initialisieren
+    sqlite3 *Datenbank;
+    int ReturnSQLLiteDB;
+    char *DatenbankError = NULL;
+    
+    // SQL Befehle generieren
+    char sql_Update_Sensorwert[35];
+    snprintf(sql_Update_Buffer, sizeof(sql_Update_Sensorwert),"UPDATE C SET Sensorwert = %d;", Sensorwert);
+    
+    // DB öffnen 
+    ReturnSQLLiteDB = sqlite3_open("Database.db", &Datenbank);
+    if (ErrorDB(ReturnSQLLiteDB, Datenbank, NULL) == 1) {
+        return 1;
+    }
+
+    // GPT Lesen
+    ReturnSQLLiteDB = sqlite3_exec(Datenbank, sql_Update_Sensorwert , callback, 0, &DatenbankError);
     if (ErrorDB(ReturnSQLLiteDB, Datenbank, DatenbankError) == 1) {
         return 1;
     }
