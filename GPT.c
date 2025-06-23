@@ -24,7 +24,7 @@ int get_status(const char* status) {
 // Hilfsfunktionen für Datenbankabfragen:
 
 // Error Handling
-int ErrorDB(int ReturnValue, sqlite3 *DB,  char *Error){
+static int ErrorDB(int ReturnValue, sqlite3 *DB,  char *Error){
     if (ReturnValue != SQLITE_OK) {
         if (Error) {
             fprintf(stderr, "Error von Datenbank: %s\n", Error);
@@ -46,7 +46,7 @@ typedef struct {
 
 SQLData Ergebnisse = {0};
 
-int callback(void *data, int AnzahlSpalten, char **SpaltenErgebnisse, char **SpaltenNamen) {
+static int callback(void *data, int AnzahlSpalten, char **SpaltenErgebnisse, char **SpaltenNamen) {
     if (strcmp(SpaltenNamen[0], "speaking") == 0) {
         if (AnzahlSpalten > 0 && SpaltenErgebnisse[0]) {
             Ergebnisse.GPTState = atoi(SpaltenErgebnisse[0]);
@@ -95,7 +95,7 @@ int GPT_Communication_init() {
     return 0;
 }
 
-int GPT_Communication_Read() {
+int GPT_Read_State() {
     // Variablen initialisieren
     sqlite3 *Datenbank;
     int ReturnSQLLiteDB;
@@ -117,10 +117,10 @@ int GPT_Communication_Read() {
     }
 
     sqlite3_close(Datenbank);
-    return 0;
+    return Ergebnisse.GPTState;
 }
 
-int GPT_Communication_Update_Sensorwert(int Sensorwert) {
+int GPT_Update_Sensorwert(int Sensorwert) {
     // Variablen initialisieren
     sqlite3 *Datenbank;
     int ReturnSQLLiteDB;
