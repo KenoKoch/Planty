@@ -15,7 +15,8 @@ int main() {
     int CounterTillBlink = 0;
     Pictures Ladebalken = Ladebalken1_Pictures;
     bool GPT_State = false;
-    
+    bool WateringState = false;
+
     // GPT Python Skript starten
     int Successfull = system("GPT.py &");
     if (Successfull == -1) {
@@ -35,6 +36,9 @@ int main() {
         if (GPT_Communication_init() == 0) {
             GPT_State = (GPT_Read_State() == 2);
         }
+
+        // Abfragen ob gerade gegossen wird
+        WateringState = DetectMoistureRaise(MoistureCase);
 
         // Merker Case von Pi File kopieren
         switch(MoistureCase){
@@ -91,10 +95,14 @@ int main() {
                 break;
         }
 
-        if (GPT_State) {
+        if (WateringState) {
+            // Hier Gießanimation einfügen
             animate_dual(&Speak_Pictures,&Ladebalken,  MoistureCase ,200);
         }
-        else {
+        else if (GPT_State)
+        {
+            animate_dual(&Speak_Pictures,&Ladebalken,  MoistureCase ,200);
+        } else {
             if (Moisture > 2.1) 
             {
                 animate_dual(&Sad_Pictures,&Ladebalken,  MoistureCase ,200);

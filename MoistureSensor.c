@@ -6,6 +6,7 @@
 #include <linux/i2c-dev.h>
 #include <unistd.h>
 #include <stdint.h>
+#include <time.h>
 
 #define I2C_BUS "/dev/i2c-1"
 #define ADS1115_ADDR 0x48
@@ -70,3 +71,24 @@ float ReadMoisture()
 
 }
 
+bool DetectMoistureRaise (int SensorValue) {
+
+    // Variablen init
+    static int oldSensorValue = 0;
+    static time_t Oldseconds = 0;
+    int SensorChangeValue = 3;
+    time_t TimeChangeValue = 2;
+
+    //aktuellen Zeit auslesen und Feuchtigkeitsänderung berechnen
+    time_t Currentseconds = time(NULL); 
+    int differenceSensor = oldSensorValue - SensorValue ;
+    time_t differenceTime = Currentseconds - Oldseconds ;
+
+    if (differenceSensor >= SensorChangeValue && differenceTime >= TimeChangeValue ){
+        Oldseconds = Currentseconds;
+        oldSensorValue = SensorValue;
+        return true;
+    } else {
+        return false;
+    }
+}
