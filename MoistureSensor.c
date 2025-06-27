@@ -11,8 +11,7 @@
 #define I2C_BUS "/dev/i2c-1"
 #define ADS1115_ADDR 0x48
 
-float ReadMoisture()
-{
+float ReadMoisture(){
     // Variablen deklarieren
     int i2c_fd;
     unsigned char config[3];
@@ -68,11 +67,9 @@ float ReadMoisture()
 
     close(i2c_fd);
     return voltage;
-
 }
 
 bool DetectMoistureRaise (int SensorValue) {
-
     // Variablen init
     static int oldSensorValue = 0;
     static time_t Oldseconds = 0;
