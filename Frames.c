@@ -1084,11 +1084,11 @@ const char *Rainframe12[24] = {
     "          Oh es Regnet Yeay  ",
 };
 
-const char* const* Rainframes[] = { Rainframe1, Rainframe2, Rainframe3, Rainframe4 };
+const char* const* Rainframes[] = { Rainframe1, Rainframe2, Rainframe3, Rainframe4, Rainframe5, Rainframe6, Rainframe7, Rainframe8, Rainframe9, Rainframe10, Rainframe11, Rainframe12};
 
 const Pictures Rain_Pictures = {
     .frames = Rainframes,
-    .num_frames = 4,
+    .num_frames = 12,
     .rows = 24,
     .cols = 35
 };
