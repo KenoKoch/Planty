@@ -808,10 +808,10 @@ const char *Rainframe2[24] = {
     "        |  \\  -  / \\  -  /  |",
     "        |         -         |",
     "         |                 |",
-    "         |     \\_____/     |",
+    "         |    (------)     |",
     "          |_______________|",
     "   ",
-    "      Der Boden schmeckt lecker ",
+    "          .. ",
 };
 
 const char *Rainframe3[24] = {
@@ -834,11 +834,11 @@ const char *Rainframe3[24] = {
     "       |    /  O  \\ /  O  \\  |",
     "        |   \\  -  / \\  -  / |",
     "        |         -         |",
-    "         |                 |",
-    "         |     \\_____/     |",
+    "         |      ____       |",
+    "         |    (______)     |",
     "          |_______________|",
     "   ",
-    "      Der Boden schmeckt lecker ",
+    "          ....",
 };
 
 const char *Rainframe4[24] = {
@@ -861,11 +861,11 @@ const char *Rainframe4[24] = {
     "       |   /  O  \\ /  O  \\   |",
     "        |  \\  -  / \\  -  /  |",
     "        |         -         |",
-    "         |                 |",
-    "         |     \\_____/     |",
+    "         |       __        |",
+    "         |     (____)      |",
     "          |_______________|",
     "   ",
-    "      Der Boden schmeckt lecker ",
+    "          Oh es ",
 };
 
 const char *Rainframe5[24] = {
@@ -888,11 +888,11 @@ const char *Rainframe5[24] = {
     "       |  /  O  \\ /  O  \\    |",
     "        | \\  -  / \\  -  /   |",
     "        |         -         |",
-    "         |                 |",
-    "         |     \\_____/     |",
+    "         |       __        |",
+    "         |     (____)      |",
     "          |_______________|",
     "                                ",
-    "      Der Boden schmeckt lecker ",
+    "          Oh es Regnet ",
 };
 
 const char *Rainframe6[24] = {
@@ -915,11 +915,11 @@ const char *Rainframe6[24] = {
     "       |   /  O  \\ /  O  \\   |",
     "        |  \\  -  / \\  -  /  |",
     "        |         -         |",
-    "         |                 |",
-    "         |     \\_____/     |",
+    "         |       __        |",
+    "         |     (____)      |",
     "          |_______________|",
     "   ",
-    "      Der Boden schmeckt lecker ",
+    "          Oh es Regnet",
 };
 
 const char *Rainframe7[24] = {
@@ -942,11 +942,11 @@ const char *Rainframe7[24] = {
     "       |    /  O  \\ /  O  \\  |",
     "        |   \\  -  / \\  -  / |",
     "        |         -         |",
-    "         |                 |",
-    "         |     \\_____/     |",
+    "         |       __        |",
+    "         |     (____)      |",
     "          |_______________|",
     "   ",
-    "      Der Boden schmeckt lecker ",
+    "          Oh es Regnet Yeay",
 };
 
 const char *Rainframe8[24] = {
@@ -973,7 +973,7 @@ const char *Rainframe8[24] = {
     "         |     \\_____/     |",
     "          |_______________|",
     "   ",
-    "      Der Boden schmeckt lecker ",
+    "          Oh es Regnet Yeay ",
 };
 
 const char *Rainframe9[24] = {
@@ -1000,7 +1000,7 @@ const char *Rainframe9[24] = {
     "         |     \\_____/     |",
     "          |_______________|",
     "                                ",
-    "      Der Boden schmeckt lecker ",
+    "          Oh es Regnet Yeay  ",
 };
 
 const char *Rainframe10[24] = {
@@ -1027,7 +1027,7 @@ const char *Rainframe10[24] = {
     "         |     \\_____/     |",
     "          |_______________|",
     "   ",
-    "      Der Boden schmeckt lecker ",
+    "          Oh es Regnet Yeay  ",
 };
 
 const char *Rainframe11[24] = {
@@ -1054,7 +1054,7 @@ const char *Rainframe11[24] = {
     "         |     \\_____/     |",
     "          |_______________|",
     "   ",
-    "      Der Boden schmeckt lecker ",
+    "          Oh es Regnet Yeay  ",
 };
 
 const char *Rainframe12[24] = {
@@ -1081,7 +1081,7 @@ const char *Rainframe12[24] = {
     "         |     \\_____/     |",
     "          |_______________|",
     "   ",
-    "      Der Boden schmeckt lecker ",
+    "          Oh es Regnet Yeay  ",
 };
 
 const char* const* Rainframes[] = { Rainframe1, Rainframe2, Rainframe3, Rainframe4 };
