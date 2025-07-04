@@ -42,50 +42,65 @@ int main() {
 
         // Merker Case von Pi File kopieren
         switch(MoistureCase){
-            case 13:
+            case 8:
                 Ladebalken = Ladebalken15_Pictures;
                 break;
-            case 14:
-                Ladebalken = Ladebalken15_Pictures;
-                break;
-            case 15:
+            case 9:
                 Ladebalken = Ladebalken14_Pictures;
                 break;
-            case 16:
+            case 10:
                 Ladebalken = Ladebalken13_Pictures;
                 break;
-            case 17:
+            case 11:
                 Ladebalken = Ladebalken12_Pictures;
                 break;
-            case 18:
+            case 12:
                 Ladebalken = Ladebalken11_Pictures;
                 break;
-            case 19:
+            case 13:
                 Ladebalken = Ladebalken10_Pictures;
                 break;
-            case 20: 
+            case 14:
                 Ladebalken = Ladebalken9_Pictures;
                 break;
-            case 21: 
+            case 15:
                 Ladebalken = Ladebalken8_Pictures;
                 break;
-            case 22:
+            case 16:
                 Ladebalken = Ladebalken7_Pictures;
                 break;
-            case 23:
+            case 17:
                 Ladebalken = Ladebalken6_Pictures;
                 break;
-            case 24:
+            case 18:
                 Ladebalken = Ladebalken5_Pictures;
                 break;
-            case 25:
+            case 19:
                 Ladebalken = Ladebalken4_Pictures;
                 break;
-            case 26:
+            case 20: 
                 Ladebalken = Ladebalken3_Pictures;
                 break;
-            case 27:
+            case 21: 
                 Ladebalken = Ladebalken2_Pictures;
+                break;
+            case 22:
+                Ladebalken = Ladebalken1_Pictures;
+                break;
+            case 23:
+                Ladebalken = Ladebalken1_Pictures;
+                break;
+            case 24:
+                Ladebalken = Ladebalken1_Pictures;
+                break;
+            case 25:
+                Ladebalken = Ladebalken1_Pictures;
+                break;
+            case 26:
+                Ladebalken = Ladebalken1_Pictures;
+                break;
+            case 27:
+                Ladebalken = Ladebalken1_Pictures;
                 break;
             case 28:
                 Ladebalken = Ladebalken1_Pictures;
