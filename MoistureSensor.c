@@ -73,19 +73,36 @@ bool DetectMoistureRaise (int SensorValue) {
     // Variablen init
     static int oldSensorValue = 0;
     static time_t Oldseconds = 0;
+    static int initialized = 0;
     int SensorChangeValue = 3;
     time_t TimeChangeValue = 2;
+    
 
     //aktuellen Zeit auslesen und Feuchtigkeitsänderung berechnen
     time_t Currentseconds = time(NULL); 
     int differenceSensor = oldSensorValue - SensorValue ;
     time_t differenceTime = Currentseconds - Oldseconds ;
 
-    if (differenceSensor >= SensorChangeValue && differenceTime >= TimeChangeValue ){
-        Oldseconds = Currentseconds;
+    if (!initialized) {
         oldSensorValue = SensorValue;
-        return true;
-    } else {
+        Oldseconds = Currentseconds;
+        initialized = 1;
         return false;
     }
+
+    if (differenceTime >= 5) {
+        Oldseconds = Currentseconds;
+        printf("%d", differenceSensor);
+        
+        if (differenceSensor >= SensorChangeValue ){
+            oldSensorValue = SensorValue;
+            return true;
+        } else {
+            oldSensorValue = SensorValue;
+            return false;
+        }
+
+    } 
+    return false;
+
 }

@@ -111,7 +111,7 @@ int GPT_Update_Sensorwert(int Sensorwert) {
     
     // SQL Befehle generieren
     char sql_Update_Sensorwert[35];
-    snprintf(sql_Update_Buffer, sizeof(sql_Update_Sensorwert),"UPDATE C SET Sensorwert = %d;", Sensorwert);
+    snprintf(sql_Update_Sensorwert, sizeof(sql_Update_Sensorwert),"UPDATE C SET Sensorwert = %d;", Sensorwert);
     
     // DB öffnen 
     ReturnSQLLiteDB = sqlite3_open("Database.db", &Datenbank);

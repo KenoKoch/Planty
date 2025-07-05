@@ -9,6 +9,7 @@ extern const Pictures Sad_Pictures;
 extern const Pictures Okay_Pictures;
 extern const Pictures Happy_Pictures;
 extern const Pictures Speak_Pictures;
+extern const Pictures Rain_Pictures;
 // Ladebalkenpictures
 extern const Pictures Ladebalken15_Pictures ; 
 extern const Pictures Ladebalken14_Pictures;

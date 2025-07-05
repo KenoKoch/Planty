@@ -18,11 +18,11 @@ int main() {
     bool WateringState = false;
 
     // GPT Python Skript starten
-    int Successfull = system("GPT.py &");
+    int Successfull = system("./venv/bin/python ./GPT.py &");
     if (Successfull == -1) {
         perror("Fehler beim Starten von GPT.py");
     } else {
-        printf("GPT.py gestartet.\n");
+        //printf("GPT.py gestartet.\n");
     }
 
     while(1){
@@ -111,8 +111,7 @@ int main() {
         }
 
         if (WateringState) {
-            // Hier Gießanimation einfügen
-            animate_dual(&Speak_Pictures,&Ladebalken,  MoistureCase ,200);
+            animate_dual(&Rain_Pictures,&Ladebalken, MoistureCase ,300);
         }
         else if (GPT_State)
         {
@@ -139,7 +138,7 @@ int main() {
             CounterTillBlink = 0;
         }
 
-        usleep(100000);
+        //usleep(100000);
     }
     return 0;
 

@@ -9,7 +9,7 @@ import sqlite3
 
 
 # Initialisieren
-client = OpenAI(api_key="")
+client = OpenAI(api_key="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")
 messages = [{"role": "system", "content": "Du bist eine lustige Pflanze, die gerne Witze macht und Aufmerksamkeit braucht"}]
 AKTIVIERUNGSWORT = "pflanze"
 
@@ -23,7 +23,7 @@ def Update_State_DB(speaking: int):
         # speaking schreiben
         cursor.execute("UPDATE GPT SET speaking = ?;", (speaking,))
         Database.commit()
-        print("GPT Status in DB aktualisiert.")
+        #print("GPT Status in DB aktualisiert.")
     except sqlite3.Error as e:
         print(f"Fehler beim Schreiben in die Datenbank: {e}")
     finally:
@@ -31,7 +31,7 @@ def Update_State_DB(speaking: int):
             Database.close()
 
 def record_audio(duration=3, fs=16000):
-    print(f"Aufnahme ({duration} Sekunden)...")
+    #print(f"Aufnahme ({duration} Sekunden)...")
     recording = sd.rec(int(duration * fs), samplerate=fs, channels=1, dtype='int16')
     sd.wait()
     return np.squeeze(recording)
@@ -49,23 +49,23 @@ def recognize_speech(audio, fs=16000):
 
 # Auslöser für Chat
 def warte_auf_schlagwort():
-    print(f"Sage das Aktivierungswort („{AKTIVIERUNGSWORT}“), um den Chat zu starten.")
+    #print(f"Sage das Aktivierungswort („{AKTIVIERUNGSWORT}“), um den Chat zu starten.")
     while True:
         audio = record_audio(duration=3)
         text = recognize_speech(audio)
         if not text:
-            print("Nichts erkannt. Noch einmal versuchen...")
+            #print("Nichts erkannt. Noch einmal versuchen...")
             continue
         print("Erkannt:", text)
         if AKTIVIERUNGSWORT in text.lower():
-            print("Aktivierungswort erkannt! Chat startet...")
+            #print("Aktivierungswort erkannt! Chat startet...")
             break
 
 # Warte auf das Aktivierungswort
 Update_State_DB(speaking = 3)
 warte_auf_schlagwort()
 os.system(f'espeak -v de "Ich höre"')
-print("Starte Chat-Schleife!")
+#print("Starte Chat-Schleife!")
 
 # Haupt-Chat-Schleife
 while True:
@@ -73,11 +73,11 @@ while True:
     text = recognize_speech(audio)
     Update_State_DB(speaking = 3)
     if not text:
-        print("Nicht verstanden, bitte nochmal versuchen.")
+        #print("Nicht verstanden, bitte nochmal versuchen.")
         continue
-    print("Du:", text)
+    #print("Du:", text)
     if text.lower() in ["exit", "quit", "beenden"]:
-        print("Beende den Chat. Bis zum nächsten Mal!")
+        #print("Beende den Chat. Bis zum nächsten Mal!")
         break
 
     messages.append({"role": "user", "content": text})
