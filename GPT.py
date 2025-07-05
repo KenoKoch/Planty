@@ -9,7 +9,7 @@ import sqlite3
 
 
 # Initialisieren
-client = OpenAI(api_key="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")
+client = OpenAI(api_key="")
 messages = [{"role": "system", "content": "Du bist eine lustige Pflanze, die gerne Witze macht und Aufmerksamkeit braucht"}]
 AKTIVIERUNGSWORT = "pflanze"
 

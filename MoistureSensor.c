@@ -92,7 +92,6 @@ bool DetectMoistureRaise (int SensorValue) {
 
     if (differenceTime >= 5) {
         Oldseconds = Currentseconds;
-        printf("%d", differenceSensor);
         
         if (differenceSensor >= SensorChangeValue ){
             oldSensorValue = SensorValue;
