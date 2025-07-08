@@ -44,7 +44,7 @@ pip install -r requirementsPy.txt
 4. Install xfce4-terminal  
 sudo apt-get install xfce4-terminal
 
-5. Setup autostart routine
+5. Setup autostart routine  
 Create a .desktop File in your confiq directory on your Raspberry pi (Raspberry OS) that starts the compiled Program when the System is booting 
 For Example:
  ```
