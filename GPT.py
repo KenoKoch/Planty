@@ -30,6 +30,23 @@ def Update_State_DB(speaking: int):
         if Database:
             Database.close()
 
+def Read_Sensorwert_DB():
+    Database = None
+    sensorwert = None
+    try:
+        Database = sqlite3.connect("Database.db")
+        cursor = Database.cursor()
+        cursor.execute("SELECT Sensorwert FROM C LIMIT 1;")
+        result = cursor.fetchone()
+        if result:
+            sensorwert = result[0]
+    except sqlite3.Error as e:
+        print(f"Fehler beim Lesen des Sensorwerts: {e}")
+    finally:
+        if Database:
+            Database.close()
+    return sensorwert
+
 def record_audio(duration=3, fs=16000):
     #print(f"Aufnahme ({duration} Sekunden)...")
     recording = sd.rec(int(duration * fs), samplerate=fs, channels=1, dtype='int16')
@@ -79,6 +96,12 @@ while True:
     if text.lower() in ["exit", "quit", "beenden"]:
         #print("Beende den Chat. Bis zum nächsten Mal!")
         break
+
+    # Sensorwert an GPT übergeben
+    sensorwert = Read_Sensorwert_DB()
+    if sensorwert is not None:
+        sensor = f"Der aktuelle Feuchtigkeitswert der Pflanze ist {sensorwert}. 8 = sehr feucht, 22 = sehr trocken"
+        messages.append({"role": "system", "content": sensor})
 
     messages.append({"role": "user", "content": text})
     try:
