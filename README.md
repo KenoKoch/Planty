@@ -70,7 +70,7 @@ Through the ChatGPT integration, you can interact with the plant (e.g., ask ques
 
 /Planty
  ```
-├── main.c                # Main C program
+├── Main.c                # Main C program
 ├── Animation.c/.h        # Animation Function
 ├── Frames.c/.h           # Frames for Animation
 ├── MoistureSensor.c/.h   # Sensor reading logic and moisture raise detection
