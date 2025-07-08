@@ -69,7 +69,7 @@ Through the ChatGPT integration, you can interact with the plant (e.g., ask ques
 #### Project Structure
 
 /Planty
-│
+ ```
 ├── main.c                # Main C program
 ├── Animation.c/.h        # Animation Function
 ├── Frames.c/.h           # Frames for Animation
@@ -80,6 +80,7 @@ Through the ChatGPT integration, you can interact with the plant (e.g., ask ques
 ├── requirementsPy.txt    # Python dependencies
 ├── requirementsC.txt     # C dependencies
 └── README.md             # This file
+ ```
 
 #### Notes
 Moisture sensor values are typically in the range of 0.8 to 2.2 (depending on the sensor) you can adapt it in MoistureSensor.c or in main.c Switch Statement
