@@ -30,15 +30,15 @@ Internet connection for ChatGPT requests
 
 Installation & Setup  
 1. Compile the Program  
-Compile the C program using your preferred compiler, for example:
-bash
-gcc Main.c -o Planty Frames.c Animation.c MoistureSensor.c GPT.c -lncurses
+Compile the C program using your preferred compiler, for example:  
+bash  
+gcc Main.c -o Planty Frames.c Animation.c MoistureSensor.c GPT.c -lncurses  
 
 2. Prepare the Python Environment  
-In your project directory:
-bash
-python3 -m venv venv
-source venv/bin/activate
+In your project directory:  
+bash  
+python3 -m venv venv  
+source venv/bin/activate  
 pip install -r requirementsPy.txt
 
 4. Install xfce4-terminal  
