@@ -18,17 +18,17 @@ Features
 - A Python script (GPT.py) is launched in parallel, enabling communication with ChatGPT. You can interact and "talk" with your plant.
 
 #### Requirements
-Hardware
+Hardware  
 Raspberry Pi (any model with GPIO support)
 Moisture sensor and ADS1115 analog digital converter
 Display (e.g., LCD or OLED) for showing animations
 
-Software
+Software  
 C compiler (e.g., gcc) to compile the main program
 Python 3 with virtual environment (venv) for the GPT script
 Internet connection for ChatGPT requests
 
-Installation & Setup
+Installation & Setup  
 1. Compile the Program
 Compile the C program using your preferred compiler, for example:
 bash
@@ -47,13 +47,14 @@ sudo apt-get install xfce4-terminal
 5. Setup autostart routine
 Create a .desktop File in your confiq directory on your Raspberry pi (Raspberry OS) that starts the compiled Program when the System is booting 
 For Example:
+ ```
 [Desktop Entry]
 Type=Application
 Name=PlantyAutostart
 Exec=xfce4-terminal --fullscreen --hide-menubar --hide-toolbar --hide-borders --command="bash -c 'sleep 5; cd /Your/Directory/Planty && ./Planty; read'"
 Terminal=false
 Name[en_GB]=PlantyAutostart
-
+ ```
 The main program automatically starts the Python script in the background.
 
 #### Project Structure
