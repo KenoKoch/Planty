@@ -4,7 +4,7 @@
 
 #### Description:
 
-Plant Moisture Monitor with ChatGPT Integration
+Plant Moisture Monitor with ChatGPT Integration  
 This program runs on a Raspberry Pi with a connected display, continuously measures the moisture level of a plant, and visualizes the plant's status through various animations. It also integrates ChatGPT, allowing interactive conversations with your plant.
 
 Features
