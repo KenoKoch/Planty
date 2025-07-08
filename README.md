@@ -42,6 +42,7 @@ source venv/bin/activate
 pip install -r requirementsPy.txt
 
 4. Install xfce4-terminal  
+bash  
 sudo apt-get install xfce4-terminal
 
 5. Setup autostart routine  
