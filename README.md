@@ -74,6 +74,6 @@ The main program automatically starts the Python script in the background.
  ```
 
 #### Notes
-Moisture sensor values are typically in the range of 0.8 to 2.2 (depending on the sensor) you can adapt it in MoistureSensor.c or in main.c Switch Statement
+Moisture sensor values are typically in the range of 0.8 to 2.2 (depending on the sensor) you can adapt it in MoistureSensor.c or in main.c switch Statement  
 ChatGPT integration requires an internet connection and a valid API key (the API key must be set in GPT.py).
 
