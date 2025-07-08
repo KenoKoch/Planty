@@ -10,13 +10,11 @@ This program runs on a Raspberry Pi with a connected display, continuously measu
 Features
 - Moisture Measurement
 - Continuously reads the plant's moisture level using a sensor.
-- Visualization
 - Displays different animations on the screen reflecting the plant's current moisture state:
 - Happy, okay, or sad faces depending on moisture level.
 - A progress bar visualizing the current moisture.
 - The plant blinks every few cycles.
 - Special animations during watering or when ChatGPT is active.
-- ChatGPT Integration
 - A Python script (GPT.py) is launched in parallel, enabling communication with ChatGPT. You can interact and "talk" with your plant.
 
 #### Requirements
@@ -57,14 +55,6 @@ Terminal=false
 Name[en_GB]=PlantyAutostart
 
 The main program automatically starts the Python script in the background.
-
-#### Usage
-The program runs in an infinite loop, continuously reading the moisture level.
-Depending on the moisture value, a corresponding animation is shown on the display.
-When the plant is being watered, a rain animation appears.
-If ChatGPT is "talking", a speaking animation is displayed.
-The plant blinks regularly as a small extra animation.
-Through the ChatGPT integration, you can interact with the plant (e.g., ask questions or have it "talk" back).
 
 #### Project Structure
 
