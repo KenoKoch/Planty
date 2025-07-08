@@ -29,12 +29,12 @@ Python 3 with virtual environment (venv) for the GPT script
 Internet connection for ChatGPT requests
 
 Installation & Setup  
-1. Compile the Program
+1. Compile the Program  
 Compile the C program using your preferred compiler, for example:
 bash
 gcc Main.c -o Planty Frames.c Animation.c MoistureSensor.c GPT.c -lncurses
 
-2. Prepare the Python Environment
+2. Prepare the Python Environment  
 In your project directory:
 bash
 python3 -m venv venv
