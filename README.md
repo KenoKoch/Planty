@@ -21,7 +21,7 @@ Features
 Hardware  
 Raspberry Pi (any model with GPIO support)  
 Moisture sensor and ADS1115 analog digital converter  
-Display (e.g., LCD or OLED) for showing animations  
+Display for showing animations  
 
 Software  
 C compiler (e.g., gcc) to compile the main program  
