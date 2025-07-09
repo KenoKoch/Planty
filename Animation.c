@@ -3,23 +3,6 @@
 #include "Animation.h"
 #include <ncurses.h>
 
-void animate(const Pictures* pictures, int delay_ms) {
-    initscr();           // ncurses-Modus starten
-    noecho();            // Eingaben nicht anzeigen
-    curs_set(0);         // Cursor ausblenden
-
-    for (int frame = 0; frame < pictures->num_frames; ++frame) {
-        clear();         // Bildschirm löschen
-        for (int row = 0; row < pictures->rows; ++row) {
-            mvprintw(row, 0, "%s", pictures->frames[frame][row]);
-        }
-        refresh();      
-        napms(delay_ms); 
-    }
-
-    curs_set(1);         // Cursor wieder einblenden
-    endwin();            // ncurses beenden
-}
 
 void animate_dual(const Pictures* pictures1, const Pictures* pictures2, int Feuchte, int delay_ms) {
     initscr();

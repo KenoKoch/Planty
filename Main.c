@@ -21,9 +21,7 @@ int main() {
     int Successfull = system("./venv/bin/python ./GPT.py &");
     if (Successfull == -1) {
         perror("Fehler beim Starten von GPT.py");
-    } else {
-        //printf("GPT.py gestartet.\n");
-    }
+    } 
 
     while(1){
 

@@ -9,8 +9,6 @@ typedef struct {
     int cols;                  // Spalen
 } Pictures;
 
-// Animationsfunktion
-void animate(const Pictures* pictures, int delay_ms);
 // Animationsfunktion 2 nebeneinander
 void animate_dual(const Pictures* pictures1, const Pictures* pictures2, int Feuchte, int delay_ms);
 
