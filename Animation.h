@@ -12,6 +12,4 @@ typedef struct {
 // Animationsfunktion 2 nebeneinander
 void animate_dual(const Pictures* pictures1, const Pictures* pictures2, int Feuchte, int delay_ms);
 
-
-
 #endif

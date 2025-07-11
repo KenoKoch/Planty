@@ -23,7 +23,7 @@ float ReadMoisture(){
     if ((i2c_fd = open(I2C_BUS, O_RDWR)) < 0) 
     {
         perror("I2C-Bus kann nicht geöffnet werden");
-        return 999;
+        return 1;
     }
 
      // ADS1115 als Slave-Device auswöhlen
@@ -31,7 +31,7 @@ float ReadMoisture(){
     {
         perror("Fehler bei Slave-Adresszuweisung");
         close(i2c_fd);
-        return 999;
+        return 1;
     }
  
     // Konfigurationsregister setzen (Single-Shot, A0 vs GND, +/-4.096V
@@ -42,7 +42,7 @@ float ReadMoisture(){
     if (write(i2c_fd, config, 3) != 3) 
     {
         perror("Fehler beim Schreiben der Konfiguration");
-        return 999;
+        return 1;
     }
 
     usleep(2000); // Warte auf Konversion
@@ -52,14 +52,14 @@ float ReadMoisture(){
     if (write(i2c_fd, reg, 1) != 1) 
     {
         perror("Fehler beim Setzen des Zeigers");
-        return 999;
+        return 1;
     }
 
     // Messwert lesen
     if (read(i2c_fd, data, 2) != 2) 
     {
         perror("Fehler beim Lesen der Daten");
-        return 999;
+        return 1;
     }
 
     raw_value = (data[0] << 8) | data[1];
@@ -71,7 +71,7 @@ float ReadMoisture(){
 
 bool DetectMoistureRaise (int SensorValue) {
     // Variablen init
-    static int oldSensorValue = 0;
+    static int OldSensorValue = 0;
     static time_t Oldseconds = 0;
     static int initialized = 0;
     int SensorChangeValue = 3;
@@ -80,24 +80,24 @@ bool DetectMoistureRaise (int SensorValue) {
 
     //aktuellen Zeit auslesen und Feuchtigkeitsänderung berechnen
     time_t Currentseconds = time(NULL); 
-    int differenceSensor = oldSensorValue - SensorValue ;
-    time_t differenceTime = Currentseconds - Oldseconds ;
+    int DifferenceSensor = OldSensorValue - SensorValue ;
+    time_t DifferenceTime = Currentseconds - Oldseconds ;
 
     if (!initialized) {
-        oldSensorValue = SensorValue;
+        OldSensorValue = SensorValue;
         Oldseconds = Currentseconds;
         initialized = 1;
         return false;
     }
 
-    if (differenceTime >= 5) {
+    if (DifferenceTime >= 5) {
         Oldseconds = Currentseconds;
         
-        if (differenceSensor >= SensorChangeValue ){
-            oldSensorValue = SensorValue;
+        if (DifferenceSensor >= SensorChangeValue ){
+            OldSensorValue = SensorValue;
             return true;
         } else {
-            oldSensorValue = SensorValue;
+            OldSensorValue = SensorValue;
             return false;
         }
 
