@@ -172,7 +172,7 @@ while True:
         print(f"Fehler bei der Anfrage an OpenAI: {e}")
         continue
 
-    print("Pflanze:", reply)
+    # print("Pflanze:", reply)
     os.system(f'espeak -v de "{reply}"')
     messages.append({"role": "assistant", "content": reply})
  
