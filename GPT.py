@@ -18,7 +18,7 @@ AKTIVIERUNGSWORT = "pflanze"
 
 
 # Funktionen
-def Update_State_DB(speaking: int):
+def UpdateStateDB(speaking: int):
     Database = None
     try:
         Database = sqlite3.connect("Database.db") 
@@ -33,7 +33,7 @@ def Update_State_DB(speaking: int):
         if Database:
             Database.close()
 
-def Read_Sensorwert_DB():
+def ReadSensorwertDB():
     Database = None
     sensorwert = None
     try:
@@ -56,7 +56,7 @@ def record_audio(duration=3, fs=16000):
     sd.wait()
     return np.squeeze(recording)
 
-def record_audio_vad(fs=16000, aggressiveness=3, padding_duration_ms=300, max_recording_duration=10):
+def RecordAudioVad(fs=16000, aggressiveness=3, padding_duration_ms=300, max_recording_duration=10):
     vad = webrtcvad.Vad(aggressiveness)
     frame_duration_ms = 30  # 10, 20 or 30 ms
     frame_size = int(fs * frame_duration_ms / 1000)  # Samples per frame
@@ -110,7 +110,7 @@ def record_audio_vad(fs=16000, aggressiveness=3, padding_duration_ms=300, max_re
     return audio_np
 
 
-def recognize_speech(audio, fs=16000):
+def ConvertAudioToText(audio, fs=16000):
     recognizer = sr.Recognizer()
     audio_data = sr.AudioData(audio.tobytes(), fs, 2)
     try:
@@ -125,8 +125,8 @@ def recognize_speech(audio, fs=16000):
 def warte_auf_schlagwort():
     #print(f"Sage das Aktivierungswort („{AKTIVIERUNGSWORT}“), um den Chat zu starten.")
     while True:
-        audio = record_audio(duration=3)
-        text = recognize_speech(audio)
+        audio = RecordAudioVad(fs=16000, aggressiveness=3, padding_duration_ms=300, max_recording_duration=10)
+        text = ConvertAudioToText(audio)
         if not text:
             #print("Nichts erkannt. Noch einmal versuchen...")
             continue
@@ -136,16 +136,16 @@ def warte_auf_schlagwort():
             break
 
 # Warte auf das Aktivierungswort
-Update_State_DB(speaking = 3)
+UpdateStateDB(speaking = 3)
 warte_auf_schlagwort()
 os.system(f'espeak -v de "Ich höre"')
 #print("Starte Chat-Schleife!")
 
 # Haupt-Chat-Schleife
 while True:
-    audio = record_audio(duration=5)
-    text = recognize_speech(audio)
-    Update_State_DB(speaking = 3)
+    audio = RecordAudioVad(fs=16000, aggressiveness=3, padding_duration_ms=300, max_recording_duration=10)
+    text = ConvertAudioToText(audio)
+    UpdateStateDB(speaking = 3)
     if not text:
         #print("Nicht verstanden, bitte nochmal versuchen.")
         continue
@@ -155,7 +155,7 @@ while True:
         break
 
     # Sensorwert an GPT übergeben
-    sensorwert = Read_Sensorwert_DB()
+    sensorwert = ReadSensorwertDB()
     if sensorwert is not None:
         sensor = f"Der aktuelle Feuchtigkeitswert der Pflanze ist {sensorwert}. 8 = sehr feucht, 22 = sehr trocken"
         messages.append({"role": "system", "content": sensor})
@@ -166,7 +166,7 @@ while True:
             model="o3-mini",  
             messages=messages
         )
-        Update_State_DB(speaking = 2)
+        UpdateStateDB(speaking = 2)
         reply = completion.choices[0].message.content
     except Exception as e:
         print(f"Fehler bei der Anfrage an OpenAI: {e}")
