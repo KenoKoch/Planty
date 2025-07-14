@@ -56,55 +56,55 @@ def record_audio(duration=3, fs=16000):
     sd.wait()
     return np.squeeze(recording)
 
-def RecordAudioVad(fs=16000, aggressiveness=3, padding_duration_ms=300, max_recording_duration=10):
-    vad = webrtcvad.Vad(aggressiveness)
-    frame_duration_ms = 30  # 10, 20 or 30 ms
-    frame_size = int(fs * frame_duration_ms / 1000)  # Samples per frame
-    num_padding_frames = int(padding_duration_ms / frame_duration_ms)
+def RecordAudioVad(SamplingRate=16000, aggressiveness=3, PaddingDuration=300, MaxRecordingDuration=10):
+    VAD = webrtcvad.Vad(aggressiveness)
+    FrameDuration = 30  # 10, 20 or 30 ms
+    FrameSize = int(SamplingRate * FrameDuration / 1000)  # Samples per frame
+    PaddingFrames = int(PaddingDuration / FrameDuration)
 
-    stream = sd.InputStream(samplerate=fs, channels=1, dtype='int16')
-    stream.start()
+    AudioStream = sd.InputStream(samplerate=SamplingRate, channels=1, dtype='int16')
+    AudioStream.start()
 
-    frames = collections.deque(maxlen=num_padding_frames)
-    triggered = False
-    voiced_frames = []
+    Frames = collections.deque(maxlen=PaddingFrames)
+    VoiceDetected = False
+    VoicedFrames = []
 
-    start_time = time.time()
+    StartTime = time.time()
 
     while True:
-        data, _ = stream.read(frame_size)
+        data, _ = AudioStream.read(FrameSize)
         if len(data) == 0:
             break
         pcm_data = data.tobytes()
-        is_speech = vad.is_speech(pcm_data, sample_rate=fs)
+        is_speech = VAD.is_speech(pcm_data, sample_rate=fs)
 
-        if not triggered:
-            frames.append((pcm_data, is_speech))
-            num_voiced = len([f for f, speech in frames if speech])
-            if num_voiced > 0.9 * frames.maxlen:
-                triggered = True
+        if not VoiceDetected:
+            Frames.append((pcm_data, is_speech))
+            num_voiced = len([f for f, speech in Frames if speech])
+            if num_voiced > 0.9 * Frames.maxlen:
+                VoiceDetected = True
                 # Alle gepufferten Frames speichern
-                for f, s in frames:
-                    voiced_frames.append(f)
-                frames.clear()
+                for f, s in Frames:
+                    VoicedFrames.append(f)
+                Frames.clear()
         else:
-            voiced_frames.append(pcm_data)
-            frames.append((pcm_data, is_speech))
-            num_unvoiced = len([f for f, speech in frames if not speech])
-            if num_unvoiced > frames.maxlen:
+            VoicedFrames.append(pcm_data)
+            Frames.append((pcm_data, is_speech))
+            num_unvoiced = len([f for f, speech in Frames if not speech])
+            if num_unvoiced > Frames.maxlen:
                 break
 
         # Optional: maximale Aufnahmezeit verhindern
-        if time.time() - start_time > max_recording_duration:
+        if time.time() - StartTime > MaxRecordingDuration:
             break
 
-    stream.stop()
-    stream.close()
+    AudioStream.stop()
+    AudioStream.close()
 
     print("Aufnahme beendet.")
 
     # Alle Frames zusammenfügen
-    audio_data = b''.join(voiced_frames)
+    audio_data = b''.join(VoicedFrames)
     audio_np = np.frombuffer(audio_data, dtype='int16')
 
     return audio_np
