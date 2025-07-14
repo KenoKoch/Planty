@@ -4,8 +4,11 @@ from openai import OpenAI
 import sounddevice as sd
 import numpy as np
 import speech_recognition as sr
+import webrtcvad
 import os
 import sqlite3
+import collections
+import time
 
 
 # Initialisieren
@@ -52,6 +55,60 @@ def record_audio(duration=3, fs=16000):
     recording = sd.rec(int(duration * fs), samplerate=fs, channels=1, dtype='int16')
     sd.wait()
     return np.squeeze(recording)
+
+def record_audio_vad(fs=16000, aggressiveness=3, padding_duration_ms=300, max_recording_duration=10):
+    vad = webrtcvad.Vad(aggressiveness)
+    frame_duration_ms = 30  # 10, 20 or 30 ms
+    frame_size = int(fs * frame_duration_ms / 1000)  # Samples per frame
+    num_padding_frames = int(padding_duration_ms / frame_duration_ms)
+
+    stream = sd.InputStream(samplerate=fs, channels=1, dtype='int16')
+    stream.start()
+
+    frames = collections.deque(maxlen=num_padding_frames)
+    triggered = False
+    voiced_frames = []
+
+    start_time = time.time()
+
+    while True:
+        data, _ = stream.read(frame_size)
+        if len(data) == 0:
+            break
+        pcm_data = data.tobytes()
+        is_speech = vad.is_speech(pcm_data, sample_rate=fs)
+
+        if not triggered:
+            frames.append((pcm_data, is_speech))
+            num_voiced = len([f for f, speech in frames if speech])
+            if num_voiced > 0.9 * frames.maxlen:
+                triggered = True
+                # Alle gepufferten Frames speichern
+                for f, s in frames:
+                    voiced_frames.append(f)
+                frames.clear()
+        else:
+            voiced_frames.append(pcm_data)
+            frames.append((pcm_data, is_speech))
+            num_unvoiced = len([f for f, speech in frames if not speech])
+            if num_unvoiced > frames.maxlen:
+                break
+
+        # Optional: maximale Aufnahmezeit verhindern
+        if time.time() - start_time > max_recording_duration:
+            break
+
+    stream.stop()
+    stream.close()
+
+    print("Aufnahme beendet.")
+
+    # Alle Frames zusammenfügen
+    audio_data = b''.join(voiced_frames)
+    audio_np = np.frombuffer(audio_data, dtype='int16')
+
+    return audio_np
+
 
 def recognize_speech(audio, fs=16000):
     recognizer = sr.Recognizer()
