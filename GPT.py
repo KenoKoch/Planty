@@ -9,10 +9,13 @@ import os
 import sqlite3
 import collections
 import time
+from dotenv import load_dotenv
 
 
 # Initialisieren
-client = OpenAI(api_key="")
+
+load_dotenv()
+client = OpenAI(api_key=os.getenv("OPENAPIKEY"))
 messages = [{"role": "system", "content": "Du bist eine lustige Pflanze, die gerne Witze macht und Aufmerksamkeit braucht"}]
 AKTIVIERUNGSWORT = "pflanze"
 
