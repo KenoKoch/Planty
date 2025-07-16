@@ -75,26 +75,26 @@ def RecordAudioVad(SamplingRate=16000, Aggressiveness=3, PaddingDuration=300, Ma
     StartTime = time.time()
 
     while True:
-        data, _ = AudioStream.read(FrameSize)
-        if len(data) == 0:
+        Data, _ = AudioStream.read(FrameSize)
+        if len(Data) == 0:
             break
-        pcm_data = data.tobytes()
-        is_speech = VAD.is_speech(pcm_data, sample_rate=SamplingRate)
+        PcmData = Data.tobytes()
+        IsSpeech = VAD.is_speech(PcmData, sample_rate=SamplingRate)
 
         if not VoiceDetected:
-            Frames.append((pcm_data, is_speech))
-            num_voiced = len([f for f, speech in Frames if speech])
-            if num_voiced > 0.9 * Frames.maxlen:
+            Frames.append((PcmData, IsSpeech))
+            NumVoiced = len([f for f, speech in Frames if speech])
+            if NumVoiced > 0.9 * Frames.maxlen:
                 VoiceDetected = True
                 # Alle gepufferten Frames speichern
                 for f, s in Frames:
                     VoicedFrames.append(f)
                 Frames.clear()
         else:
-            VoicedFrames.append(pcm_data)
-            Frames.append((pcm_data, is_speech))
-            num_unvoiced = len([f for f, speech in Frames if not speech])
-            if num_unvoiced > Frames.maxlen:
+            VoicedFrames.append(PcmData)
+            Frames.append((PcmData, IsSpeech))
+            NumUnvoiced = len([f for f, speech in Frames if not speech])
+            if NumUnvoiced > Frames.maxlen:
                 break
 
         # Optional: maximale Aufnahmezeit verhindern
@@ -104,20 +104,20 @@ def RecordAudioVad(SamplingRate=16000, Aggressiveness=3, PaddingDuration=300, Ma
     AudioStream.stop()
     AudioStream.close()
 
-    print("Aufnahme beendet.")
+    os.system(f'espeak -v de "Sag etwas"')
 
     # Alle Frames zusammenfügen
-    audio_data = b''.join(VoicedFrames)
-    audio_np = np.frombuffer(audio_data, dtype='int16')
+    AudioData = b''.join(VoicedFrames)
+    AudioNp = np.frombuffer(AudioData, dtype='int16')
 
-    return audio_np
+    return AudioNp
 
 
-def ConvertAudioToText(audio, fs=16000):
-    recognizer = sr.Recognizer()
-    audio_data = sr.AudioData(audio.tobytes(), fs, 2)
+def ConvertAudioToText(Audio, fs=16000):
+    Recognizer = sr.Recognizer()
+    AudioData = sr.AudioData(Audio.tobytes(), fs, 2)
     try:
-        return recognizer.recognize_google(audio_data, language="de-DE")
+        return Recognizer.recognize_google(AudioData, language="de-DE")
     except sr.UnknownValueError:
         return ""
     except sr.RequestError as e:
@@ -125,22 +125,22 @@ def ConvertAudioToText(audio, fs=16000):
         return ""
 
 # Auslöser für Chat
-def warte_auf_schlagwort():
+def WaitForKeyword():
     #print(f"Sage das Aktivierungswort („{AKTIVIERUNGSWORT}“), um den Chat zu starten.")
     while True:
-        audio = RecordAudioVad(SamplingRate=16000, Aggressiveness=3, PaddingDuration=300, MaxRecordingDuration=10)
-        text = ConvertAudioToText(audio)
-        if not text:
+        Audio = RecordAudioVad(SamplingRate=16000, Aggressiveness=3, PaddingDuration=300, MaxRecordingDuration=10)
+        Text = ConvertAudioToText(Audio)
+        if not Text:
             #print("Nichts erkannt. Noch einmal versuchen...")
             continue
-        print("Erkannt:", text)
-        if AKTIVIERUNGSWORT in text.lower():
+        #print("Erkannt:", Text)
+        if AKTIVIERUNGSWORT in Text.lower():
             #print("Aktivierungswort erkannt! Chat startet...")
             break
 
 # Warte auf das Aktivierungswort
 UpdateStateDB(speaking = 3)
-warte_auf_schlagwort()
+WaitForKeyword()
 os.system(f'espeak -v de "Ich höre"')
 #print("Starte Chat-Schleife!")
 
@@ -150,7 +150,7 @@ while True:
     text = ConvertAudioToText(audio)
     UpdateStateDB(speaking = 3)
     if not text:
-        #print("Nicht verstanden, bitte nochmal versuchen.")
+        os.system(f'espeak -v de "Das habe ich nicht verstanden, exit sagen zum beenden"')
         continue
     #print("Du:", text)
     if text.lower() in ["exit", "quit", "beenden"]:
@@ -172,6 +172,7 @@ while True:
         UpdateStateDB(speaking = 2)
         reply = completion.choices[0].message.content
     except Exception as e:
+        os.system(f'espeak -v de "Fehler bei der Anfrage an OpenAI"')
         print(f"Fehler bei der Anfrage an OpenAI: {e}")
         continue
 

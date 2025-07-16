@@ -1,115 +1,5 @@
 #include "Animation.h"
 
-// Augen wackeln
-const char *Eyeframe1[22] = {
-    "               |_|_|",
-    "           \\_||||;;_/",
-    "         \\d||||||;::H/",
-    "         \\d||###||;:::H/",
-    "       ._H||###||||;::::H_.",
-    "       ._H||###||||;::::H_.",
-    "       ._H||###||||;::::H_.",
-    "       ._?|||#|||||;:::H_.",
-    "        ._H||||||||;::H_.",
-    "         ._?|||||||;::H_.",
-    "          ._H||||||;:H_.",
-    "          ._H||||||;:H_.",
-    "     .=========================.",
-    "     |_________________________|",
-    "      |                       |",
-    "       |   .'''.   .'''.     |",
-    "       |  /  O  \\ /  O  \\    |",
-    "        | \\  -  / \\  -  /   |",
-    "        |         -         |",
-    "         |                 |",
-    "         |     |______|    |",
-    "          |_______________|",
-};
-
-const char *Eyeframe2[22] = {
-    "               |_|_|",
-    "           \\_||||;;_/",
-    "         \\d||||||;::H/",
-    "         \\d||###||;:::H/",
-    "       ._H||###||||;::::H_.",
-    "       ._H||###||||;::::H_.",
-    "       ._H||###||||;::::H_.",
-    "       ._?|||#|||||;:::H_.",
-    "        ._H||||||||;::H_.",
-    "         ._?|||||||;::H_.",
-    "          ._H||||||;:H_.",
-    "          ._H||||||;:H_.",
-    "     .=========================.",
-    "     |_________________________|",
-    "      |                       |",
-    "       |    .'''.   .'''.    |",
-    "       |   /  O  \\ /  O  \\   |",
-    "        |  \\  -  / \\  -  /  |",
-    "        |         -         |",
-    "         |                 |",
-    "         |     |______|    |",
-    "          |_______________|",
-};
-
-const char *Eyeframe3[22] = {
-    "               |_|_|",
-    "           \\_||||;;_/",
-    "         \\d||||||;::H/",
-    "         \\d||###||;:::H/",
-    "       ._H||###||||;::::H_.",
-    "       ._H||###||||;::::H_.",
-    "       ._H||###||||;::::H_.",
-    "       ._?|||#|||||;:::H_.",
-    "        ._H||||||||;::H_.",
-    "         ._?|||||||;::H_.",
-    "          ._H||||||;:H_.",
-    "          ._H||||||;:H_.",
-    "     .=========================.",
-    "     |_________________________|",
-    "      |                       |",
-    "       |     .'''.   .'''.   |",
-    "       |    /  O  \\ /  O  \\  |",
-    "        |   \\  -  / \\  -  / |",
-    "        |         -         |",
-    "         |                 |",
-    "         |     |______|    |",
-    "          |_______________|",
-};
-
-const char *Eyeframe4[22] = {
-    "               |_|_|",
-    "           \\_||||;;_/",
-    "         \\d||||||;::H/",
-    "         \\d||###||;:::H/",
-    "       ._H||###||||;::::H_.",
-    "       ._H||###||||;::::H_.",
-    "       ._H||###||||;::::H_.",
-    "       ._?|||#|||||;:::H_.",
-    "        ._H||||||||;::H_.",
-    "         ._?|||||||;::H_.",
-    "          ._H||||||;:H_.",
-    "          ._H||||||;:H_.",
-    "     .=========================.",
-    "     |_________________________|",
-    "      |                       |",
-    "       |    .'''.   .'''.    |",
-    "       |   /  O  \\ /  O  \\   |",
-    "        |  \\  -  / \\  -  /  |",
-    "        |         -         |",
-    "         |                 |",
-    "         |     |______|    |",
-    "          |_______________|",
-};
-
-const char* const* EyeFrames[] = { Eyeframe1, Eyeframe2, Eyeframe3, Eyeframe4 };
-
-const Pictures Eye_Pictures = {
-    .frames = EyeFrames,
-    .num_frames = 4,
-    .rows = 22
-};
-
-
 // Blinzeln
 const char *Blinkframe1[24] = {
     "               |_|_|",
@@ -1127,32 +1017,6 @@ const char *Ladebalken15_2[23] = {
     "             ",
     "       _____ ",
     "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char *Ladebalken15_3[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
     "      |     |",
     "      |  #  |",
     "      |  #  |",
@@ -1172,33 +1036,7 @@ const char *Ladebalken15_3[23] = {
     "     ",
 };
 
-const char *Ladebalken15_4[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char* const* Ladebalken15frames[] = { Ladebalken15_1, Ladebalken15_2, Ladebalken15_3, Ladebalken15_4 };
+const char* const* Ladebalken15frames[] = { Ladebalken15_1, Ladebalken15_1, Ladebalken15_2, Ladebalken15_2 };
 
 const Pictures Ladebalken15_Pictures = {
     .frames =  Ladebalken15frames,
@@ -1242,32 +1080,6 @@ const char *Ladebalken14_2[23] = {
     "       _____ ",
     "      |     |",
     "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char *Ladebalken14_3[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
     "      |     |",
     "      |  #  |",
     "      |  #  |",
@@ -1286,33 +1098,7 @@ const char *Ladebalken14_3[23] = {
     "     ",
 };
 
-const char *Ladebalken14_4[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char* const* Ladebalken14frames[] = { Ladebalken14_1, Ladebalken14_2, Ladebalken14_3, Ladebalken14_4 };
+const char* const* Ladebalken14frames[] = { Ladebalken14_1, Ladebalken14_1, Ladebalken14_2, Ladebalken14_2 };
 
 const Pictures Ladebalken14_Pictures = {
     .frames =  Ladebalken14frames,
@@ -1358,32 +1144,6 @@ const char *Ladebalken13_2[23] = {
     "      |     |",
     "      |     |",
     "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char *Ladebalken13_3[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
     "      |     |",
     "      |  #  |",
     "      |  #  |",
@@ -1401,33 +1161,7 @@ const char *Ladebalken13_3[23] = {
     "     ",
 };
 
-const char *Ladebalken13_4[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char* const* Ladebalken13frames[] = { Ladebalken13_1, Ladebalken13_2, Ladebalken13_3, Ladebalken13_4 };
+const char* const* Ladebalken13frames[] = { Ladebalken13_1, Ladebalken13_1, Ladebalken13_2, Ladebalken13_2 };
 
 const Pictures Ladebalken13_Pictures = {
     .frames =  Ladebalken13frames,
@@ -1473,32 +1207,6 @@ const char *Ladebalken12_2[23] = {
     "      |     |",
     "      |     |",
     "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char *Ladebalken12_3[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
     "      |     |",
     "      |  #  |",
     "      |  #  |",
@@ -1515,33 +1223,7 @@ const char *Ladebalken12_3[23] = {
     "     ",
 };
 
-const char *Ladebalken12_4[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char* const* Ladebalken12frames[] = { Ladebalken12_1, Ladebalken12_2, Ladebalken12_3, Ladebalken12_4 };
+const char* const* Ladebalken12frames[] = { Ladebalken12_1, Ladebalken12_1, Ladebalken12_2, Ladebalken12_2 };
 
 const Pictures Ladebalken12_Pictures = {
     .frames =  Ladebalken12frames,
@@ -1589,32 +1271,6 @@ const char *Ladebalken11_2[23] = {
     "      |     |",
     "      |     |",
     "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char *Ladebalken11_3[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
     "      |     |",
     "      |  #  |",
     "      |  #  |",
@@ -1630,33 +1286,7 @@ const char *Ladebalken11_3[23] = {
     "     ",
 };
 
-const char *Ladebalken11_4[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char* const* Ladebalken11frames[] = { Ladebalken11_1, Ladebalken11_2, Ladebalken11_3, Ladebalken11_4 };
+const char* const* Ladebalken11frames[] = { Ladebalken11_1, Ladebalken11_1, Ladebalken11_2, Ladebalken11_2 };
 
 const Pictures Ladebalken11_Pictures = {
     .frames =  Ladebalken11frames,
@@ -1705,32 +1335,6 @@ const char *Ladebalken10_2[23] = {
     "      |     |",
     "      |     |",
     "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char *Ladebalken10_3[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
     "      |     |",
     "      |  #  |",
     "      |  #  |",
@@ -1745,33 +1349,7 @@ const char *Ladebalken10_3[23] = {
     "     ",
 };
 
-const char *Ladebalken10_4[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char* const* Ladebalken10frames[] = { Ladebalken10_1, Ladebalken10_2, Ladebalken10_3, Ladebalken10_4 };
+const char* const* Ladebalken10frames[] = { Ladebalken10_1, Ladebalken10_1, Ladebalken10_2, Ladebalken10_2 };
 
 const Pictures Ladebalken10_Pictures = {
     .frames =  Ladebalken10frames,
@@ -1820,32 +1398,6 @@ const char *Ladebalken9_2[23] = {
     "      |     |",
     "      |     |",
     "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char *Ladebalken9_3[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
     "      |     |",
     "      |  #  |",
     "      |  #  |",
@@ -1859,33 +1411,7 @@ const char *Ladebalken9_3[23] = {
     "     ",
 };
 
-const char *Ladebalken9_4[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char* const* Ladebalken9frames[] = { Ladebalken9_1, Ladebalken9_2, Ladebalken9_3, Ladebalken9_4 };
+const char* const* Ladebalken9frames[] = { Ladebalken9_1, Ladebalken9_1, Ladebalken9_2, Ladebalken9_2 };
 
 const Pictures Ladebalken9_Pictures = {
     .frames =  Ladebalken9frames,
@@ -1936,32 +1462,6 @@ const char *Ladebalken8_2[23] = {
     "      |     |",
     "      |     |",
     "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char *Ladebalken8_3[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
     "      |     |",
     "      |  #  |",
     "      |  #  |",
@@ -1974,33 +1474,7 @@ const char *Ladebalken8_3[23] = {
     "     ",
 };
 
-const char *Ladebalken8_4[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char* const* Ladebalken8frames[] = { Ladebalken8_1, Ladebalken8_2, Ladebalken8_3, Ladebalken8_4 };
+const char* const* Ladebalken8frames[] = { Ladebalken8_1, Ladebalken8_1, Ladebalken8_2, Ladebalken8_2 };
 
 const Pictures Ladebalken8_Pictures = {
     .frames =  Ladebalken8frames,
@@ -2051,32 +1525,6 @@ const char *Ladebalken7_2[23] = {
     "      |     |",
     "      |     |",
     "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char *Ladebalken7_3[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
     "      |     |",
     "      |  #  |",
     "      |  #  |",
@@ -2088,33 +1536,7 @@ const char *Ladebalken7_3[23] = {
     "     ",
 };
 
-const char *Ladebalken7_4[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char* const* Ladebalken7frames[] = { Ladebalken7_1, Ladebalken7_2, Ladebalken7_3, Ladebalken7_4 };
+const char* const* Ladebalken7frames[] = { Ladebalken7_1, Ladebalken7_1, Ladebalken7_2, Ladebalken7_2 };
 
 const Pictures Ladebalken7_Pictures = {
     .frames =  Ladebalken7frames,
@@ -2166,32 +1588,6 @@ const char *Ladebalken6_2[23] = {
     "      |     |",
     "      |     |",
     "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char *Ladebalken6_3[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
     "      |     |",
     "      |  #  |",
     "      |  #  |",
@@ -2202,33 +1598,7 @@ const char *Ladebalken6_3[23] = {
     "     ",
 };
 
-const char *Ladebalken6_4[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char* const* Ladebalken6frames[] = { Ladebalken6_1, Ladebalken6_2, Ladebalken6_3, Ladebalken6_4 };
+const char* const* Ladebalken6frames[] = { Ladebalken6_1, Ladebalken6_1, Ladebalken6_2, Ladebalken6_2 };
 
 const Pictures Ladebalken6_Pictures = {
     .frames =  Ladebalken6frames,
@@ -2282,32 +1652,6 @@ const char *Ladebalken5_2[23] = {
     "      |     |",
     "      |     |",
     "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char *Ladebalken5_3[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
     "      |     |",
     "      |  #  |",
     "      |  #  |",
@@ -2317,33 +1661,7 @@ const char *Ladebalken5_3[23] = {
     "     ",
 };
 
-const char *Ladebalken5_4[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char* const* Ladebalken5frames[] = { Ladebalken5_1, Ladebalken5_2, Ladebalken5_3, Ladebalken5_4 };
+const char* const* Ladebalken5frames[] = { Ladebalken5_1, Ladebalken5_1, Ladebalken5_2, Ladebalken5_2 };
 
 const Pictures Ladebalken5_Pictures = {
     .frames =  Ladebalken5frames,
@@ -2397,32 +1715,6 @@ const char *Ladebalken4_2[23] = {
     "      |     |",
     "      |     |",
     "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char *Ladebalken4_3[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
     "      |     |",
     "      |  #  |",
     "      |  #  |",
@@ -2431,33 +1723,7 @@ const char *Ladebalken4_3[23] = {
     "     ",
 };
 
-const char *Ladebalken4_4[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char* const* Ladebalken4frames[] = { Ladebalken4_1, Ladebalken4_2, Ladebalken4_3, Ladebalken4_4 };
+const char* const* Ladebalken4frames[] = { Ladebalken4_1, Ladebalken4_1, Ladebalken4_2, Ladebalken4_2 };
 
 const Pictures Ladebalken4_Pictures = {
     .frames =  Ladebalken4frames,
@@ -2513,32 +1779,6 @@ const char *Ladebalken3_2[23] = {
     "      |     |",
     "      |     |",
     "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char *Ladebalken3_3[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
     "      |     |",
     "      |  #  |",
     "      |  #  |",
@@ -2546,33 +1786,7 @@ const char *Ladebalken3_3[23] = {
     "     ",
 };
 
-const char *Ladebalken3_4[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char* const* Ladebalken3frames[] = { Ladebalken3_1, Ladebalken3_2, Ladebalken3_3, Ladebalken3_4 };
+const char* const* Ladebalken3frames[] = { Ladebalken3_1, Ladebalken3_1, Ladebalken3_2, Ladebalken3_2 };
 
 const Pictures Ladebalken3_Pictures = {
     .frames =  Ladebalken3frames,
@@ -2629,65 +1843,13 @@ const char *Ladebalken2_2[23] = {
     "      |     |",
     "      |     |",
     "      |     |",
-    "      |  #  |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char *Ladebalken2_3[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
     "      |     |",
     "      |  #  |",
     "      |_____|",
     "     ",
 };
 
-const char *Ladebalken2_4[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char* const* Ladebalken2frames[] = { Ladebalken2_1, Ladebalken2_2, Ladebalken2_3, Ladebalken2_4 };
+const char* const* Ladebalken2frames[] = { Ladebalken2_1, Ladebalken2_1, Ladebalken2_2, Ladebalken2_2 };
 
 const Pictures Ladebalken2_Pictures = {
     .frames =  Ladebalken2frames,
@@ -2745,64 +1907,12 @@ const char *Ladebalken1_2[23] = {
     "      |     |",
     "      |     |",
     "      |     |",
-    "      |  #  |",
-    "      |_____|",
-    "     ",
-};
-
-const char *Ladebalken1_3[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
     "      |     |",
     "      |_____|",
     "     ",
 };
 
-const char *Ladebalken1_4[23] = {
-    "             ",
-    "             ",
-    "             ",
-    "             ",
-    "       _____ ",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |     |",
-    "      |_____|",
-    "     ",
-};
-
-const char* const* Ladebalken1frames[] = { Ladebalken1_1, Ladebalken1_2, Ladebalken1_3, Ladebalken1_4 };
+const char* const* Ladebalken1frames[] = { Ladebalken1_1, Ladebalken1_1, Ladebalken1_2, Ladebalken1_2 };
 
 const Pictures Ladebalken1_Pictures = {
     .frames =  Ladebalken1frames,

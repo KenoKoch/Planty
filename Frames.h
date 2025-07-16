@@ -3,7 +3,6 @@
 
 #include "Animation.h"
 
-extern const Pictures Eye_Pictures;
 extern const Pictures Blink_Pictures;
 extern const Pictures Sad_Pictures;
 extern const Pictures Okay_Pictures;
