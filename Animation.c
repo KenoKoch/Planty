@@ -9,11 +9,11 @@ void animate_dual(const Pictures* pictures1, const Pictures* pictures2, int Feuc
     noecho();
     curs_set(0);
 
-    int max_frames = pictures1->num_frames > pictures2->num_frames ? pictures1->num_frames : pictures2->num_frames;
+    int MaxFrames = pictures1->num_frames > pictures2->num_frames ? pictures1->num_frames : pictures2->num_frames;
     int OffsetAnim1 = 5; 
     int OffsetAnim2 = pictures1->cols + OffsetAnim1 + 5; 
 
-    for (int frame = 0; frame < max_frames; ++frame) {
+    for (int frame = 0; frame < MaxFrames; ++frame) {
         clear();
 
         // Animation 1

@@ -28,7 +28,11 @@ int main() {
         // Sensorwert auslesen und in DB schreiben
         float Moisture = ReadMoisture();
         int MoistureCase = (int)(Moisture * 10);
+        int MoistureValue = 0;
         GPT_Update_Sensorwert(MoistureCase);
+
+        // Umrechnen von MoistureCase in 0 bis 15
+        MoistureValue = 23 - MoistureCase ;
        
         // GPT Status abfragen
         if (GPT_Communication_init() == 0) {
@@ -109,30 +113,30 @@ int main() {
         }
 
         if (WateringState) {
-            animate_dual(&Rain_Pictures,&Ladebalken, MoistureCase ,300);
+            animate_dual(&Rain_Pictures,&Ladebalken, MoistureValue ,300);
         }
         else if (GPT_State)
         {
-            animate_dual(&Speak_Pictures,&Ladebalken,  MoistureCase ,200);
+            animate_dual(&Speak_Pictures,&Ladebalken,  MoistureValue ,200);
         } else {
             if (Moisture > 2.1) 
             {
-                animate_dual(&Sad_Pictures,&Ladebalken,  MoistureCase ,200);
+                animate_dual(&Sad_Pictures,&Ladebalken,  MoistureValue ,200);
             }
             else if  (Moisture <= 2.1  && Moisture >= 1.8) 
             {
-                animate_dual(&Okay_Pictures,&Ladebalken,  MoistureCase ,200);
+                animate_dual(&Okay_Pictures,&Ladebalken,  MoistureValue ,200);
             }
             else if  (Moisture < 1.8) 
             {
-                animate_dual(&Happy_Pictures,&Ladebalken,  MoistureCase ,200);
+                animate_dual(&Happy_Pictures,&Ladebalken,  MoistureValue ,200);
             } 
         }
 
         // Alle drei animationen blinzeln
         CounterTillBlink += 1;
         if (CounterTillBlink >= 3) {
-            animate_dual(&Blink_Pictures,&Ladebalken,  MoistureCase, 200);
+            animate_dual(&Blink_Pictures,&Ladebalken,  MoistureValue, 200);
             CounterTillBlink = 0;
         }
 
