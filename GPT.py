@@ -59,8 +59,8 @@ def record_audio(duration=3, fs=16000):
     sd.wait()
     return np.squeeze(recording)
 
-def RecordAudioVad(SamplingRate=16000, aggressiveness=3, PaddingDuration=300, MaxRecordingDuration=10):
-    VAD = webrtcvad.Vad(aggressiveness)
+def RecordAudioVad(SamplingRate=16000, Aggressiveness=3, PaddingDuration=300, MaxRecordingDuration=10):
+    VAD = webrtcvad.Vad(Aggressiveness)
     FrameDuration = 30  # 10, 20 or 30 ms
     FrameSize = int(SamplingRate * FrameDuration / 1000)  # Samples per frame
     PaddingFrames = int(PaddingDuration / FrameDuration)
@@ -79,7 +79,7 @@ def RecordAudioVad(SamplingRate=16000, aggressiveness=3, PaddingDuration=300, Ma
         if len(data) == 0:
             break
         pcm_data = data.tobytes()
-        is_speech = VAD.is_speech(pcm_data, sample_rate=fs)
+        is_speech = VAD.is_speech(pcm_data, sample_rate=SamplingRate)
 
         if not VoiceDetected:
             Frames.append((pcm_data, is_speech))
@@ -128,7 +128,7 @@ def ConvertAudioToText(audio, fs=16000):
 def warte_auf_schlagwort():
     #print(f"Sage das Aktivierungswort („{AKTIVIERUNGSWORT}“), um den Chat zu starten.")
     while True:
-        audio = RecordAudioVad(fs=16000, aggressiveness=3, padding_duration_ms=300, max_recording_duration=10)
+        audio = RecordAudioVad(SamplingRate=16000, Aggressiveness=3, PaddingDuration=300, MaxRecordingDuration=10)
         text = ConvertAudioToText(audio)
         if not text:
             #print("Nichts erkannt. Noch einmal versuchen...")
@@ -146,7 +146,7 @@ os.system(f'espeak -v de "Ich höre"')
 
 # Haupt-Chat-Schleife
 while True:
-    audio = RecordAudioVad(fs=16000, aggressiveness=3, padding_duration_ms=300, max_recording_duration=10)
+    audio = RecordAudioVad(SamplingRate=16000, Aggressiveness=3, PaddingDuration=300, MaxRecordingDuration=10)
     text = ConvertAudioToText(audio)
     UpdateStateDB(speaking = 3)
     if not text:
