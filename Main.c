@@ -42,7 +42,6 @@ int main() {
         // Abfragen ob gerade gegossen wird
         WateringState = DetectMoistureRaise(MoistureCase);
 
-        // Merker Case von Pi File kopieren
         switch(MoistureCase){
             case 8:
                 Ladebalken = Ladebalken15_Pictures;
