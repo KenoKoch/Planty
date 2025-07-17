@@ -29,14 +29,14 @@ int main() {
         float Moisture = ReadMoisture();
         int MoistureCase = (int)(Moisture * 10);
         int MoistureValue = 0;
-        GPT_Update_Sensorwert(MoistureCase);
+        GptUpdateSensorwert(MoistureCase);
 
         // Umrechnen von MoistureCase in 0 bis 15
         MoistureValue = 23 - MoistureCase ;
        
         // GPT Status abfragen
-        if (GPT_Communication_init() == 0) {
-            GPT_State = (GPT_Read_State() == 2);
+        if (GptCommunicationInit() == 0) {
+            GPT_State = (GptReadState() == 2);
         }
 
         // Abfragen ob gerade gegossen wird
@@ -113,30 +113,30 @@ int main() {
         }
 
         if (WateringState) {
-            animate_dual(&Rain_Pictures,&Ladebalken, MoistureValue ,300);
+            AnimateDual(&Rain_Pictures,&Ladebalken, MoistureValue ,300);
         }
         else if (GPT_State)
         {
-            animate_dual(&Speak_Pictures,&Ladebalken,  MoistureValue ,200);
+            AnimateDual(&Speak_Pictures,&Ladebalken,  MoistureValue ,200);
         } else {
             if (Moisture > 2.1) 
             {
-                animate_dual(&Sad_Pictures,&Ladebalken,  MoistureValue ,200);
+                AnimateDual(&Sad_Pictures,&Ladebalken,  MoistureValue ,200);
             }
             else if  (Moisture <= 2.1  && Moisture >= 1.8) 
             {
-                animate_dual(&Okay_Pictures,&Ladebalken,  MoistureValue ,200);
+                AnimateDual(&Okay_Pictures,&Ladebalken,  MoistureValue ,200);
             }
             else if  (Moisture < 1.8) 
             {
-                animate_dual(&Happy_Pictures,&Ladebalken,  MoistureValue ,200);
+                AnimateDual(&Happy_Pictures,&Ladebalken,  MoistureValue ,200);
             } 
         }
 
         // Alle drei animationen blinzeln
         CounterTillBlink += 1;
         if (CounterTillBlink >= 3) {
-            animate_dual(&Blink_Pictures,&Ladebalken,  MoistureValue, 200);
+            AnimateDual(&Blink_Pictures,&Ladebalken,  MoistureValue, 200);
             CounterTillBlink = 0;
         }
 

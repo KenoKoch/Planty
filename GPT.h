@@ -8,9 +8,9 @@ typedef struct {
 } SQLData;
 
 int get_status(const char* status);
-int GPT_Communication_init();
-int GPT_Read_State();
-int GPT_Update_Sensorwert(int Sensorwert);
+int GptCommunicationInit();
+int GptReadState();
+int GptUpdateSensorwert(int Sensorwert);
 
 
 #endif
