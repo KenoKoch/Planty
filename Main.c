@@ -14,7 +14,7 @@ int main() {
     // Variablen initialisieren
     int CounterTillBlink = 0;
     Pictures Ladebalken = Ladebalken1_Pictures;
-    bool GPT_State = false;
+    bool GptState = false;
     bool WateringState = false;
 
     // GPT Python Skript starten
@@ -36,7 +36,7 @@ int main() {
        
         // GPT Status abfragen
         if (GptCommunicationInit() == 0) {
-            GPT_State = (GptReadState() == 2);
+            GptState = (GptReadState() == 2);
         }
 
         // Abfragen ob gerade gegossen wird
@@ -115,7 +115,7 @@ int main() {
         if (WateringState) {
             AnimateDual(&Rain_Pictures,&Ladebalken, MoistureValue ,300);
         }
-        else if (GPT_State)
+        else if (GptState)
         {
             AnimateDual(&Speak_Pictures,&Ladebalken,  MoistureValue ,200);
         } else {
