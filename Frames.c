@@ -172,7 +172,7 @@ const char *Sadframe1[24] = {
     "         |    /     \\      |",
     "          |_______________|",
     "   ",
-    "   Schmeckt nicht gut bitte gießen ",
+    "   Schmeckt nicht gut, Wasser bitte ",
 };
 
 const char *Sadframe2[24] = {
@@ -199,7 +199,7 @@ const char *Sadframe2[24] = {
     "         |    /     \\      |",
     "          |_______________|",
     "   ",
-    "   Schmeckt nicht gut bitte gießen ",
+    "   Schmeckt nicht gut, Wasser bitte ",
 };
 
 const char *Sadframe3[24] = {
@@ -226,7 +226,7 @@ const char *Sadframe3[24] = {
     "         |    /     \\      |",
     "          |_______________|",
     "   ",
-    "   Schmeckt nicht gut bitte gießen ",
+    "   Schmeckt nicht gut, Wasser bitte ",
 };
 
 const char *Sadframe4[24] = {
@@ -253,7 +253,7 @@ const char *Sadframe4[24] = {
     "         |    /     \\      |",
     "          |_______________|",
     "   ",
-    "   Schmeckt nicht gut bitte gießen ",
+    "   Schmeckt nicht gut, Wasser bitte ",
 };
 
 const char* const* Sadframes[] = { Sadframe1, Sadframe2, Sadframe3, Sadframe4 };
