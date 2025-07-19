@@ -29,7 +29,7 @@ void AnimateDual(const Pictures* Pictures1, const Pictures* Pictures2, int Feuch
         }
 
          // Variable über Animation 2 
-        mvprintw(0, OffsetAnim2, "Wasserstand: %d", Feuchte);
+        mvprintw(0, OffsetAnim2, "%d", Feuchte);
 
         refresh();
         napms(DelayMs);
