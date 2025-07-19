@@ -122,11 +122,11 @@ int main() {
             {
                 AnimateDual(&Sad_Pictures,&Ladebalken,  MoistureValue ,200);
             }
-            else if  (Moisture <= 2.1  && Moisture >= 1.8) 
+            else if  (Moisture <= 2.1  && Moisture >= 1.3) 
             {
                 AnimateDual(&Okay_Pictures,&Ladebalken,  MoistureValue ,200);
             }
-            else if  (Moisture < 1.8) 
+            else if  (Moisture < 1.3) 
             {
                 AnimateDual(&Happy_Pictures,&Ladebalken,  MoistureValue ,200);
             } 
