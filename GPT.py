@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAPIKEY"))
 messages = [{"role": "system", "content": "Du bist eine lustige Pflanze, die gerne Witze macht und Aufmerksamkeit braucht"}]
-AKTIVIERUNGSWORT = "pflanze"
+AKTIVIERUNGSWORT = "hallo"
 
 
 # Funktionen
