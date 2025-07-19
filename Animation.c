@@ -12,6 +12,7 @@ void AnimateDual(const Pictures* Pictures1, const Pictures* Pictures2, int Feuch
     int MaxFrames = Pictures1->num_frames > Pictures2->num_frames ? Pictures1->num_frames : Pictures2->num_frames;
     int OffsetAnim1 = 6; 
     int OffsetAnim2 = Pictures1->cols + OffsetAnim1 + 5; 
+    int OffsetAnim3 = OffsetAnim2 + 5;
 
     for (int Frame = 0; Frame < MaxFrames; ++Frame) {
         clear();
@@ -29,7 +30,7 @@ void AnimateDual(const Pictures* Pictures1, const Pictures* Pictures2, int Feuch
         }
 
          // Variable über Animation 2 
-        mvprintw(0, OffsetAnim2, "%d", Feuchte);
+        mvprintw(0, OffsetAnim3, "%d", Feuchte);
 
         refresh();
         napms(DelayMs);
