@@ -34,10 +34,10 @@ float ReadMoisture(){
         return 1;
     }
  
-    // Konfigurationsregister setzen (Single-Shot, A0 vs GND, +/-4.096V
-    config[0] = 0x01; // Config-Register-Adresse
-    config[1] = 0xC3; // High-Byte
-    config[2] = 0x83; // Low-Byte
+    // Konfigurationsregister setzen 
+    config[0] = 0x01;
+    config[1] = 0xC3; 
+    config[2] = 0x83; 
 
     if (write(i2c_fd, config, 3) != 3) 
     {
@@ -77,7 +77,6 @@ bool DetectMoistureRaise (int SensorValue) {
     int SensorChangeValue = 3;
     time_t TimeChangeValue = 2;
     
-
     //aktuellen Zeit auslesen und Feuchtigkeitsänderung berechnen
     time_t Currentseconds = time(NULL); 
     int DifferenceSensor = OldSensorValue - SensorValue ;

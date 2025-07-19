@@ -7,7 +7,6 @@ typedef struct {
     int SensorValue;
 } SQLData;
 
-int get_status(const char* status);
 int GptCommunicationInit();
 int GptReadState();
 int GptUpdateSensorwert(int Sensorwert);

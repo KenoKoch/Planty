@@ -139,7 +139,6 @@ int main() {
             CounterTillBlink = 0;
         }
 
-        //usleep(100000);
     }
     return 0;
 

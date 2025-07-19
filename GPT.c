@@ -4,8 +4,6 @@
 #include <sqlite3.h>
 
 
-// Hilfsfunktionen für Datenbankabfragen:
-
 // Error Handling
 static int HandleErrorDB(int ReturnValue, sqlite3 *DB,  char *Error){
     if (ReturnValue != SQLITE_OK) {

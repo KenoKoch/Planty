@@ -3,10 +3,10 @@
 
 // Struktur für eine Animation
 typedef struct {
-    const char* const* const* frames;   // Array von Frame-Strings
-    int num_frames;                     // Anzahl der Frames
-    int rows;                           // Zeilen 
-    int cols;                           // Spalen
+    const char* const* const* frames; 
+    int num_frames;                    
+    int rows;                           
+    int cols;                
 } Pictures;
 
 // Animationsfunktion 2 nebeneinander
