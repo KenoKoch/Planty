@@ -53,7 +53,7 @@ def ReadSensorwertDB():
             Database.close()
     return sensorwert
 
-def RecordAudioVad(SamplingRate=16000, Aggressiveness=2, PaddingDuration=300, MaxRecordingDuration=10):
+def RecordAudioVad(SamplingRate=16000, Aggressiveness=1, PaddingDuration=300, MaxRecordingDuration=10):
     VAD = webrtcvad.Vad(Aggressiveness)
     FrameDuration = 30  # 10, 20 or 30 ms
     FrameSize = int(SamplingRate * FrameDuration / 1000)  # Samples per frame
@@ -122,7 +122,7 @@ def ConvertAudioToText(Audio, fs=16000):
 def WaitForKeyword():
     #print(f"Sage das Aktivierungswort („{AKTIVIERUNGSWORT}“), um den Chat zu starten.")
     while True:
-        Audio = RecordAudioVad(SamplingRate=16000, Aggressiveness=2, PaddingDuration=300, MaxRecordingDuration=10)
+        Audio = RecordAudioVad(SamplingRate=16000, Aggressiveness=1, PaddingDuration=300, MaxRecordingDuration=10)
         Text = ConvertAudioToText(Audio)
         if not Text:
             #print("Nichts erkannt. Noch einmal versuchen...")
@@ -140,7 +140,7 @@ os.system(f'espeak -v de "Ich höre"')
 
 # Haupt-Chat-Schleife
 while True:
-    audio = RecordAudioVad(SamplingRate=16000, Aggressiveness=2, PaddingDuration=300, MaxRecordingDuration=10)
+    audio = RecordAudioVad(SamplingRate=16000, Aggressiveness=1, PaddingDuration=300, MaxRecordingDuration=10)
     text = ConvertAudioToText(audio)
     UpdateStateDB(speaking = 3)
     if not text:
