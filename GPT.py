@@ -98,8 +98,6 @@ def RecordAudioVad(SamplingRate=16000, Aggressiveness=1, PaddingDuration=300, Ma
     AudioStream.stop()
     AudioStream.close()
 
-    os.system(f'espeak -v de "Sag etwas"')
-
     # Alle Frames zusammenfügen
     AudioData = b''.join(VoicedFrames)
     AudioNp = np.frombuffer(AudioData, dtype='int16')
@@ -140,11 +138,11 @@ os.system(f'espeak -v de "Ich höre"')
 
 # Haupt-Chat-Schleife
 while True:
-    audio = RecordAudioVad(SamplingRate=16000, Aggressiveness=1, PaddingDuration=300, MaxRecordingDuration=10)
-    text = ConvertAudioToText(audio)
     UpdateStateDB(speaking = 3)
+    audio = RecordAudioVad(SamplingRate=16000, Aggressiveness=1, PaddingDuration=300, MaxRecordingDuration=20)
+    text = ConvertAudioToText(audio)
     if not text:
-        os.system(f'espeak -v de "Das habe ich nicht verstanden, exit sagen zum beenden"')
+        os.system(f'espeak -v de "Sag etwas, beenden sagen damit ich nicht mehr nerve"')
         continue
     #print("Du:", text)
     if text.lower() in ["exit", "quit", "beenden"]:
