@@ -142,7 +142,7 @@ while True:
     audio = RecordAudioVad(SamplingRate=16000, Aggressiveness=1, PaddingDuration=300, MaxRecordingDuration=20)
     text = ConvertAudioToText(audio)
     if not text:
-        os.system(f'espeak -v de "Sag etwas, beenden sagen damit ich nicht mehr nerve"')
+        os.system(f'espeak -v de "Sag etwas, beenden sagen damit ich nicht länger nerve"')
         continue
     #print("Du:", text)
     if text.lower() in ["exit", "quit", "beenden"]:
