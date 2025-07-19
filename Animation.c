@@ -3,52 +3,37 @@
 #include "Animation.h"
 #include <ncurses.h>
 
-void animate(const Pictures* pictures, int delay_ms) {
-    initscr();           // ncurses-Modus starten
-    noecho();            // Eingaben nicht anzeigen
-    curs_set(0);         // Cursor ausblenden
 
-    for (int frame = 0; frame < pictures->num_frames; ++frame) {
-        clear();         // Bildschirm löschen
-        for (int row = 0; row < pictures->rows; ++row) {
-            mvprintw(row, 0, "%s", pictures->frames[frame][row]);
-        }
-        refresh();      
-        napms(delay_ms); 
-    }
-
-    curs_set(1);         // Cursor wieder einblenden
-    endwin();            // ncurses beenden
-}
-
-void animate_dual(const Pictures* pictures1, const Pictures* pictures2, int Feuchte, int delay_ms) {
+void AnimateDual(const Pictures* Pictures1, const Pictures* Pictures2, int Feuchte, int DelayMs) {
     initscr();
     noecho();
     curs_set(0);
 
-    int max_frames = pictures1->num_frames > pictures2->num_frames ? pictures1->num_frames : pictures2->num_frames;
-    int offset = pictures1->cols + 5; 
+    int MaxFrames = Pictures1->num_frames > Pictures2->num_frames ? Pictures1->num_frames : Pictures2->num_frames;
+    int OffsetAnim1 = 18; 
+    int OffsetAnim2 = Pictures1->cols + OffsetAnim1 + 4; 
+    int OffsetAnim3 = OffsetAnim2 + 8;
 
-    for (int frame = 0; frame < max_frames; ++frame) {
+    for (int Frame = 0; Frame < MaxFrames; ++Frame) {
         clear();
 
         // Animation 1
-        int f1 = frame % pictures1->num_frames;
-        for (int row = 0; row < pictures1->rows; ++row) {
-            mvprintw(row, 0, "%s", pictures1->frames[f1][row]);
+        int FrameNumber1 = Frame % Pictures1->num_frames;
+        for (int Row = 0; Row < Pictures1->rows; ++Row) {
+            mvprintw(Row, OffsetAnim1, "%s", Pictures1->frames[FrameNumber1][Row]);
         }
 
         // Animation 2
-        int f2 = frame % pictures2->num_frames;
-        for (int row = 0; row < pictures2->rows; ++row) {
-            mvprintw(row, offset, "%s", pictures2->frames[f2][row]);
+        int FrameNumber2 = Frame % Pictures2->num_frames;
+        for (int Row = 0; Row < Pictures2->rows; ++Row) {
+            mvprintw(Row, OffsetAnim2, "%s", Pictures2->frames[FrameNumber2][Row]);
         }
 
          // Variable über Animation 2 
-        mvprintw(0, offset, "Wasserstand: %d", Feuchte);
+        mvprintw(0, OffsetAnim3, "%d", Feuchte);
 
         refresh();
-        napms(delay_ms);
+        napms(DelayMs);
     }
 
     curs_set(1);

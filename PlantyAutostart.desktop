@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=PlantyAutostart
+Exec=xfce4-terminal --fullscreen --hide-menubar --hide-toolbar --hide-borders --command="bash -c 'tput civis; sleep 5; cd /Your/Directory/Planty && ./Planty; read'"
+Terminal=false
+Name[en_GB]=PlantyAutostart
+

@@ -5,5 +5,7 @@
 
 // Funktion Sensor auslesen
 float ReadMoisture();
+// Funktion Feuchtigkeitsanstieg erkennen
+bool DetectMoistureRaise (int SensorValue);
 
 #endif

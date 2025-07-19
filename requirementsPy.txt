@@ -1,0 +1,6 @@
+numpy==2.2.5
+openai==1.78.1
+python-dotenv==1.1.1
+sounddevice==0.5.1
+SpeechRecognition==3.14.3
+webrtcvad==2.0.10

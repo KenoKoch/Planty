@@ -2,7 +2,14 @@
 #define GPT_H
 
 
-int get_status(const char* staus);
+typedef struct {
+    int GPTState ;
+    int SensorValue;
+} SQLData;
+
+int GptCommunicationInit();
+int GptReadState();
+int GptUpdateSensorwert(int Sensorwert);
 
 
 #endif

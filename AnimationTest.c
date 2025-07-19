@@ -5,7 +5,6 @@
 #include <stdlib.h>
 
 
-
 int main() {
  
     // Animation
@@ -22,7 +21,6 @@ int main() {
             MoistureCase = 13;
         }
                       
-
         // Ladebalkenbilder als Variable
         switch(MoistureCase){
             case 13:
