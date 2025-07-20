@@ -1,6 +1,6 @@
 # Planty
 
-#### Video Demo:  <URL HERE>
+#### Video Demo:  <https://youtu.be/ZDwLqy_1ssQ>
 
 #### Description:
 
